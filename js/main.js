@@ -1,4 +1,4 @@
 $('#input-send').click(function(){
-    var message = $('#input-message').html();
+    var message = $('#input-message').val();
     alert(message);
 });

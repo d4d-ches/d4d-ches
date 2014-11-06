@@ -11,13 +11,13 @@ $settings = array(
 );
 
 /** URL for REST request, see: https://dev.twitter.com/docs/api/1.1/ **/
-$url = 'https://api.twitter.com/1.1/statuses/update.json';
+$url = 'https://api.twitter.com/1.1/direct_messages/new.json';
 $requestMethod = 'POST';
 
 /** POST fields required by the URL above. See relevant docs as above **/
 $postfields = array(
-    'status' => 'Chilling at Harvard', 
-    'skip_status' => '1'
+    'screen_name' => 'anmol_gup23',
+    'text' => 'Hi man!'
 );
 
 /** Perform a POST request and echo the response **/

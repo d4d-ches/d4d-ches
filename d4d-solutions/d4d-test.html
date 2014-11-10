@@ -1,0 +1,24 @@
+<head>
+  <title>d4d-solutions</title>
+</head>
+
+<body>
+  <h1>Survey questions!!!!</h1>
+  
+  <form class="new-question">
+  	<input type="text" name="text" placeholder="Survey question" />
+  	<button type="submit">Add</button>
+  </form>
+  
+  <ul>
+  	{{#each questions}}
+  		{{> question}}     
+  	{{/each}}
+  </ul>
+</body>
+
+<template name="question">
+	<li>
+		<span>{{text}}</span>
+  	</li>
+</template>

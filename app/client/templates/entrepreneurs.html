@@ -1,12 +1,14 @@
 <template name="page_entrepreneurs">
 
     <h2>Entrepreneurs</h2>
-    
+
     <strong>Neel "Dark Spice" Mehta</strong>
 
     <!-- Your HTML here -->
     <div class="well">
-        <form class="form form-horizontal">
+        <h3><span class="glyphicon glyphicon-plus"></span> Add an Entrepreneur</h3>
+
+        <form class="form form-horizontal" id="form-add-entrepreneur">
             <div class="form-group">
                 <label class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
@@ -16,7 +18,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Phone #</label>
                 <div class="col-sm-10">
-                    <input type="tel" class="form-control" name="name">
+                    <input type="tel" class="form-control" name="phone">
                 </div>
             </div>
             <div class="form-group">
@@ -24,10 +26,71 @@
                 <div class="col-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon">@</span>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="twitter">
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Company Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="company">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Company Location</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="location">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Company Field</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="field">
+                    <p class="help-block">Agriculture, manufacturing, etc.</p>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-plus"></span> Add
+            </button>
         </form>
     </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Twitter Handle</th>
+            <th>Company Name</th>
+            <th>Company Location</th>
+            <th>Company Field</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="name" value="Andre Preneur">
+            </td>
+            <td>
+                <input type="tel" name="phone" value="212-555-5555">
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" name="twitter" value="andre">
+                </div>                
+            </td>
+            <td>
+                <input type="text" name="company" value="Andre's Knickknacks">                
+            </td>
+            <td>
+                <input type="text" name="location" value="New York, NY">
+            </td>
+            <td>
+                <input type="text" name="field" value="Kitsch">
+            </td>
+        </tr>
+    </table>
+    
+    <button class="btn btn-primary btn-lg">
+        <span class="glyphicon glyphicon-ok"></span> Save changes
+    </button>
 </template>

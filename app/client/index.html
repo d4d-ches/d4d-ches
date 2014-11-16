@@ -1,72 +1,66 @@
 <head>
-  <title>CHES Surveys</title>
-    
+    <title>CHES Surveys</title>
+
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    
+
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <!-- put a header bar here! -->
     <nav class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">CHES Surveys</a>
-        </div>
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">CHES Surveys</a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right nav-tabs" role="tablist">
-            <li role="presentation" class="active">
-                <a href="#questions" role="tab" data-toggle="tab">Questions</a>
-            </li>
-            <li role="presentation">
-                 <a href="#entrepreneurs" role="tab" data-toggle="tab">Entrepreneurs</a>
-            </li>
-            <li role="presentation">
-                <a href="#send" role="tab" data-toggle="tab">Send</a>
-            </li>
-            <li role="presentation">
-                <a href="#history" role="tab" data-toggle="tab">History</a>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>    
-    
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#questions" role="tab" data-toggle="tab">Questions</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#entrepreneurs" role="tab" data-toggle="tab">Entrepreneurs</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#send" role="tab" data-toggle="tab">Send</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#history" role="tab" data-toggle="tab">History</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
     <div class="container">
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="questions">
-            <h2>Questions</h2>
-            <strong>Cindy "Death Metal" Zhao</strong>
-            <!-- your HTML here -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="questions">
+                {{> page_questions }}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="entrepreneurs">
+                {{> page_entrepreneurs }}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="send">
+                {{> page_send }}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="history">
+                {{> page_history }}
+            </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="entrepreneurs">  
-            <h2>Entrepreneurs</h2>
-            <strong>Neel "Dark Spice" Mehta</strong>
-            <!-- your HTML here -->        
-        </div>
-        <div role="tabpanel" class="tab-pane" id="send">
-            <h2>Send messages</h2>
-            <strong>Daniel "Long Board" Kang</strong>
-            <!-- your HTML here -->    
-        </div>
-        <div role="tabpanel" class="tab-pane" id="history">
-            <h2>History</h2>
-            <strong>Anmol "Hard Rock" Gupta</strong>
-                    <!-- your HTML here -->
-        </div>
-      </div>    
     </div>
-    
-<!--    
+
+    <!--    
     {{> loginButtons}}
   
   <form class="new-question">
@@ -84,7 +78,7 @@
 </body>
 
 <template name="question">
-	<li>
-		<span>{{text}}</span>
-  	</li>
+    <li>
+        <span>{{text}}</span>
+    </li>
 </template>

@@ -57,40 +57,44 @@
     </div>
 
     <table class="table table-striped">
-        <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Twitter Handle</th>
-            <th>Company Name</th>
-            <th>Company Location</th>
-            <th>Company Field</th>
-        </tr>
-        <tr>
-            <td>
-                <input type="text" name="name" value="Andre Preneur">
-            </td>
-            <td>
-                <input type="tel" name="phone" value="212-555-5555">
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon">@</span>
-                    <input type="text" name="twitter" value="andre">
-                </div>                
-            </td>
-            <td>
-                <input type="text" name="company" value="Andre's Knickknacks">                
-            </td>
-            <td>
-                <input type="text" name="location" value="New York, NY">
-            </td>
-            <td>
-                <input type="text" name="field" value="Kitsch">
-            </td>
-        </tr>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Twitter Handle</th>
+                <th>Company Name</th>
+                <th>Company Location</th>
+                <th>Company Field</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" name="name" class="form-control" value="Andre Preneur">
+                </td>
+                <td>
+                    <input type="tel" name="phone" class="form-control" value="212-555-5555">
+                </td>
+                <td>
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" name="twitter" class="form-control" value="andre">
+                    </div>                
+                </td>
+                <td>
+                    <input type="text" name="company" class="form-control" value="Andre's Knickknacks">                
+                </td>
+                <td>
+                    <input type="text" name="location" class="form-control" value="New York, NY">
+                </td>
+                <td>
+                    <input type="text" name="field" class="form-control" value="Kitsch">
+                </td>
+            </tr>            
+        </tbody>
     </table>
     
     <button class="btn btn-primary btn-lg">
-        <span class="glyphicon glyphicon-ok"></span> Save changes
+        <span class="glyphicon glyphicon-ok"></span> Save changes 
     </button>
 </template>

@@ -22,10 +22,24 @@ Template.body.events({
     }
 });
 
-// At the bottom of the client code
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY",
 });
 Accounts.config({
     forbidClientAccountCreation: true 
 });
+
+
+
+test = function() {
+    var term = "test";
+    Meteor.call('searchTwitter', term, function(err, result){
+        if(!err){
+            if (result.statusCode === 200) // This checks if we got a good response
+                console.log(result.data); // This is the actual data
+        }
+        else{
+            console.log(err);
+        }
+    });
+}

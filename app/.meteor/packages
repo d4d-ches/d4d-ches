@@ -7,5 +7,10 @@ meteor-platform
 autopublish
 insecure
 jquery
-accounts-ui
 accounts-password
+twitter
+accounts-twitter
+accounts-ui
+sewdn:twitter-api
+oauth
+

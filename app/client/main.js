@@ -2,21 +2,24 @@ Questions = new Mongo.Collection("questions");
 Entrepreneurs = new Mongo.Collection("entrepreneurs");
 History = new Mongo.Collection("history");
 
-Template.body.helpers({
+Template.page_questions.helpers({
     questions: function () {
       return Questions.find({});
     }
 });
 
-Template.body.events({
-    'submit .new-question': function (event) {
+Template.page_questions.events({
+    'submit #add_question': function (event) {
         // add a new question
-        var text = event.target.text.value;
+        var text = event.target.question_text.value;
         Questions.insert({
-            text:  text
+            text: text,
+            language: "en",
+            created: new Date(),
+            numberSends: 0
         });
 
-        event.target.text.value = null;
+        event.target.question_text.value = null;
 
         return false;
     }
@@ -28,8 +31,6 @@ Accounts.ui.config({
 Accounts.config({
     forbidClientAccountCreation: true 
 });
-
-
 
 test = function() {
     var term = "test";

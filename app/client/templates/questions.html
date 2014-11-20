@@ -7,8 +7,8 @@
     <div class="new-question">
         <h4>Add A New Question:</h4>
     
-        <form>
-            <input type="text" name="question_added" placeholder="Survey Question:" />
+        <form id="add_question">
+            <input type="text" name="question_text" placeholder="Survey Question:" />
             <button type="submit">Add</button>
         </form>
         
@@ -18,11 +18,9 @@
         <h4>List of Current Questions:</h4>
         
         <ul>
-        <input type="checkbox" checked> <p>What is the app to install of the day?</p>
-        
-        <input type="checkbox" checked>
-        <p>Who is the hairiest of them all?</p>
-
+            {{#each questions}}
+                {{> question_template }}
+            {{/each}}
         </ul>
         
         <form>
@@ -32,4 +30,10 @@
 
     </div>
 
+</template>
+
+<template name="question_template">
+    <li>
+        <input type="checkbox" checked> {{ text }}    
+    </li>
 </template>

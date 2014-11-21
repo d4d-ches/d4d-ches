@@ -9,8 +9,15 @@ insecure
 jquery
 accounts-password
 twitter
-accounts-twitter
 accounts-ui
 sewdn:twitter-api
 oauth
+meteorhacks:npm
+
+
+npm-container
+meteorhacks:async
+http
+oauth1
+accounts-twitter
 

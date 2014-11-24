@@ -11,9 +11,8 @@ Template.page_questions.helpers({
 Template.page_questions.events({
     'submit #add_question': function (event) {
         // add a new question
-        var text = event.target.question_text.value;
         Questions.insert({
-            text: text,
+            question_text: event.target.question_text.value,
             language: "en",
             created: new Date(),
             numberSends: 0
@@ -49,6 +48,9 @@ Template.page_entrepreneurs.events({
     },
     'click .btn-delete': function(event){
         Entrepreneurs.remove(this._id);
+    },
+    'click .btn-save': function(event){
+        //Entrepreneurs.update(this._id,
     }
 });
 

@@ -56,28 +56,30 @@
         </form>
     </div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Twitter Handle</th>
-                <th>Company Name</th>
-                <th>Company Location</th>
-                <th>Company Field</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each entrepreneurs}}
-                {{> entrepreneur_template}}
-            {{/each}}
-        </tbody>
-    </table>
-    
-    <button class="btn btn-primary btn-lg">
-        <span class="glyphicon glyphicon-ok"></span> Save changes 
-    </button>
+    <form class="form" id="form-save-entrepreneur">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Twitter Handle</th>
+                    <th>Company Name</th>
+                    <th>Company Location</th>
+                    <th>Company Field</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each entrepreneurs}}
+                    {{> entrepreneur_template}}
+                {{/each}}
+            </tbody>
+        </table>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">
+            <span class="glyphicon glyphicon-ok"></span> Save changes 
+        </button>
+    </form>
 </template>
 
 <template name="entrepreneur_template">

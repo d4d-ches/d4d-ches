@@ -67,6 +67,7 @@
                     <th>Company Location</th>
                     <th>Company Field</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -75,10 +76,6 @@
                 {{/each}}
             </tbody>
         </table>
-
-        <button class="btn btn-primary btn-lg btn-block" type="submit">
-            <span class="glyphicon glyphicon-ok"></span> Save changes 
-        </button>
     </form>
 </template>
 
@@ -105,6 +102,11 @@
         <td>
             <input type="text" name="field" class="form-control" value="{{field}}">
         </td>
+       <td>
+           <button class="btn btn-success btn-save">
+               <span class="glyphicon glyphicon-ok-circle"></span>
+           </button>
+       </td>       
        <td>
            <button class="btn btn-danger btn-delete">
                <span class="glyphicon glyphicon-remove"></span>

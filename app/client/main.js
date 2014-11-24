@@ -50,7 +50,16 @@ Template.page_entrepreneurs.events({
         Entrepreneurs.remove(this._id);
     },
     'click .btn-save': function(event){
-        //Entrepreneurs.update(this._id,
+        var form = event.target;
+        Entrepreneurs.update(this._id,
+                             {
+                                name:       form.name.value,
+                                phone:      form.phone.value,
+                                twitter:    form.twitter.value,
+                                company:    form.company.value,
+                                location:   form.location.value,
+                                field:      form.field.value,            
+                             });
     }
 });
 

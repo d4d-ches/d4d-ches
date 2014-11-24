@@ -8,7 +8,7 @@
         <h4>Add A New Question:</h4>
     
         <form id="add_question">
-            <input type="text" name="question_text" placeholder="Survey Question:" />
+            <input type="text" name="question_text" placeholder="Survey Question:" class="form-control"/>
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
         
@@ -17,18 +17,19 @@
     <div class="current-questions">
         <h4>List of Current Questions:</h4>
         
-        <ul class="list-unstyled">
-            {{#each questions}}
-                {{> question_template }}
-            {{/each}}
-        </ul>
-        
+        <form class="form" id="form-save-questions">
+            <table class="table table-striped">
+                <tbody>
+                    {{#each questions}}
+                        {{> question_template }}
+                    {{/each}}
+                </tbody>
+            </table>
+        </form>
+
         <form>
             <button type="submit" data-loading-text="Modifying..." class="btn btn-primary">
                 Modify Selected
-            </button>
-            <button type="submit" data-loading-text="Deleting..." class="btn btn-primary">
-                Delete
             </button>
         </form>
 
@@ -37,7 +38,15 @@
 </template>
 
 <template name="question_template">
-    <li>
-        <input type="checkbox" unchecked> {{ text }}    
-    </li>
+    <tr>
+        <td>
+            <input type="text" name="question_text" class="form-control" value="{{question_text}}">
+        </td>
+        
+        <td>
+           <button class="btn btn-danger btn-delete">
+               <span class="glyphicon glyphicon-remove"></span>
+           </button>
+        </td>
+    </tr>
 </template>

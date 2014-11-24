@@ -47,9 +47,11 @@ Template.page_entrepreneurs.events({
         return false;
     },
     'click .btn-delete': function(event){
+        // delete this entrepreneur
         Entrepreneurs.remove(this._id);
     },
     'click .btn-save': function(event){
+        // update this entrepreneur
         var props = {};
         $(event.target).closest('tr').children().find('input').each(function(){
             props[$(this).attr('name')] = $(this).val();
@@ -57,6 +59,7 @@ Template.page_entrepreneurs.events({
         console.log(props);
         Entrepreneurs.update(this._id, props);
     }
+    // TODO whenever you edit a field, the row's "send" button becomes editable
 });
 
 Accounts.ui.config({

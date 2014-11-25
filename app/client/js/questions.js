@@ -16,5 +16,19 @@ Template.page_questions.events({
         clearForm(event.target);
 
         return false;
+    },
+    'click .btn-delete': function(event){
+        // delete this question
+        Questions.remove(this._id);
+    },
+    'click .btn-save': function(event){
+        //update this question
+        var props = {};
+        $(event.target).closest('tr').children().find('input').each(function(){
+            props[$(this).attr('name')] = $(this).val();
+        });
+        console.log(props);
+        Questions.update(this._id, props)
     }
+
 });

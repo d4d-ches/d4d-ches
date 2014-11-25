@@ -1,7 +1,5 @@
 <template name="page_questions">
-    <h2>Questions</h2>
-    
-    <strong>Cindy "Death Metal" Zhao</strong>     
+    <h2>Questions</h2>  
     
     <!-- Your HTML here -->
     <div class="new-question">
@@ -19,6 +17,13 @@
         
         <form class="form" id="form-save-questions">
             <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Save</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
                 <tbody>
                     {{#each questions}}
                         {{> question_template }}
@@ -42,7 +47,11 @@
         <td>
             <input type="text" name="question_text" class="form-control" value="{{question_text}}">
         </td>
-        
+        <td>
+            <button class="btn btn-success btn-save">
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </td>
         <td>
            <button class="btn btn-danger btn-delete">
                <span class="glyphicon glyphicon-remove"></span>

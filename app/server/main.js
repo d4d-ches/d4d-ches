@@ -18,6 +18,12 @@ Meteor.methods({
     bet: function(){
         return 5;
     },
+    /**
+        Posts a direct message with the given message and recipient.
+        params:
+            String recipient    The Twitter handle of the recipient
+            String message      The text (max. 140 chars; ensure this yourself) to send
+    */
     sendDirectMessage: function(params){
         return twitter.post('direct_messages/new.json', { 
             screen_name: params.recipient,

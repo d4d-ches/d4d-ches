@@ -20,3 +20,26 @@ run = function(name){
         console.log(R = JSON.parse(result.content)); 
     });
 }
+
+/**
+    Sends the given survey questions to each of the given recipients.
+    Get both arguments via Questions.find() and Entrepreneurs.find()
+*/
+sendSurvey = function(questions, recipients){
+   questions.forEach(function(question){
+        recipients.forEach(function(recipient){
+            console.log("Send " + question.question_text + " to " + recipient.twitter);
+            /*
+            
+            var params = {
+                recipient: recipient.twitter,
+                text: question.question_text
+            };
+            Meteor.call('sendDirectMessage', params, function(error, result){
+                console.log(result);
+            });
+            
+            */
+        });
+    });
+}

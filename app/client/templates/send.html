@@ -9,41 +9,9 @@
             <!-- Entrepreneurs!!! -->
             <strong>List of Entrepreneurs</strong> 
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                </div>
+                {{#each entrepreneurs}}
+                    {{> entrepreneur_send_template}}
+                {{/each}}                
             </div>
         </div>
     
@@ -51,41 +19,6 @@
             <!-- Questions!!! -->
             <strong>Questions</strong> 
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            THIS IS A QUESTION?
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            THIS IS A QUESTION?
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            THIS IS A QUESTION?
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            THIS IS A QUESTION?
-                        </label>
-                    </div>
-                </div>
                 
             </div>
         </div>
@@ -97,3 +30,31 @@
             </button>
     </div>
 </template>
+
+<template name="entrepreneur_send_template">
+    
+    <div class="col-xs-12">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Option one is this and that&mdash;be sure to include why it's great
+            </label>
+        </div>
+    </div>
+    
+    
+</template>
+
+<template name="question_send_template">
+    
+    <div class="col-xs-12">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                THIS IS A QUESTION?
+            </label>
+        </div>
+    </div>
+                
+</template>
+    

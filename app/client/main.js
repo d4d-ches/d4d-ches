@@ -26,20 +26,20 @@ run = function(name){
     Get both arguments via Questions.find() and Entrepreneurs.find()
 */
 sendSurvey = function(questions, recipients){
-   questions.forEach(function(question){
-        recipients.forEach(function(recipient){
+   $.each(questions, function(key, question){
+        $.each(recipients, function(key, recipient){
             console.log("Send " + question.question_text + " to " + recipient.twitter);
-            /*
+            
             
             var params = {
                 recipient: recipient.twitter,
-                text: question.question_text
+                message: question.question_text
             };
             Meteor.call('sendDirectMessage', params, function(error, result){
+                console.log(error);
                 console.log(result);
             });
             
-            */
         });
     });
 }

@@ -19,13 +19,15 @@
             <!-- Questions!!! -->
             <strong>Questions</strong> 
             <div class="row">
-                
+                {{#each questions}}
+                    {{> question_send_template}}
+                {{/each}} 
             </div>
         </div>
     </div>
     
     <div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block">
+    <button type="submit" id="btn-send" class="btn btn-primary btn-lg btn-block">
                 <span class="glyphicon glyphicon-send"></span> SEND!
             </button>
     </div>
@@ -37,7 +39,8 @@
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="">
-                Option one is this and that&mdash;be sure to include why it's great
+                {{name}}
+                @{{twitter}}
             </label>
         </div>
     </div>
@@ -51,7 +54,7 @@
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="">
-                THIS IS A QUESTION?
+                {{question_text}}
             </label>
         </div>
     </div>

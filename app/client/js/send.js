@@ -1,3 +1,7 @@
+$(function(){
+    $('#send-confirmation').slideUp();
+});
+
 Template.page_send.helpers({
     questions: function () {
       return Questions.find({});
@@ -31,6 +35,8 @@ Template.page_send.events({
         console.log(entrepreneurs);
         
         sendSurvey(questions, entrepreneurs);
+        
+        $('#send-confirmation').slideDown();
         
         return false;
     }

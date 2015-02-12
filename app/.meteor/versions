@@ -16,7 +16,7 @@ callback-hook@1.0.1
 check@1.0.2
 ctl-helper@1.0.4
 ctl@1.0.2
-ddp@1.0.11
+ddp@1.0.12
 deps@1.0.5
 ejson@1.0.4
 email@1.0.4
@@ -42,7 +42,7 @@ meteorhacks:npm@1.2.1
 minifiers@1.1.2
 minimongo@1.0.5
 mobile-status-bar@1.0.1
-mongo@1.0.8
+mongo@1.0.9
 npm-bcrypt@0.7.7
 npm-container@1.0.0
 oauth1@1.1.2

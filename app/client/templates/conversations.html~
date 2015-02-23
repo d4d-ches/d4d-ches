@@ -1,9 +1,7 @@
-<template name="page_conversations">
+<template name="page_conversation">
     <h2>Conversations</h2> 
     <div class="select-entrepreneur">
         <h4>Select An Entrepreneur</h4>
-	
-{{entrepreneurs}}
 
     <select>
 	{{#each entrepreneurs}}
@@ -14,4 +12,21 @@
 	{{/each}}
     </select>
 </div>
+    Hey
+
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="well">
+                From you!
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6 col-xs-push-6">
+            <div class="well">
+                From them!
+            </div>
+        </div>
+    </div>
 </template>

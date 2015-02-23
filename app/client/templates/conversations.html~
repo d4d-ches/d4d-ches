@@ -2,6 +2,8 @@
     <h2>Conversations</h2> 
     <div class="select-entrepreneur">
         <h4>Select An Entrepreneur</h4>
+	
+{{entrepreneurs}}
 
     <select>
 	{{#each entrepreneurs}}

@@ -3,23 +3,20 @@ Entrepreneurs = new Mongo.Collection("entrepreneurs");
 History = new Mongo.Collection("history");
 
 Accounts.config({
-    forbidClientAccountCreation: true 
+    // forbidClientAccountCreation: true
 });
 
 
 var twitter = new TwitterApi();
 Meteor.methods({
-    search: function () {
-      return twitter.search("harvard");
-    },
-    run: function(){
-        return twitter;
-    },
-    bet: function(){
-        return 5;
-    },
+    /**
+        Posts a direct message with the given message and recipient.
+        params:
+            String recipient    The Twitter handle of the recipient
+            String message      The text (max. 140 chars; ensure this yourself) to send
+    */
     sendDirectMessage: function(params){
-        return twitter.post('direct_messages/new.json', { 
+        return twitter.post('direct_messages/new.json', {
             screen_name: params.recipient,
             text: params.message
         });
@@ -46,7 +43,7 @@ Meteor.methods({
         //
         T.post('statuses/update', { status: 'hello world!' }, function(err, data, response) {
           console.log(data)
-        });    
+        });
     }
 });
 */

@@ -2,7 +2,7 @@
     <title>CHES Surveys</title>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    
+
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 
@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a>{{> loginButtons}}</a></li>
-                </ul>                
+                </ul>
                 <ul class="nav navbar-nav navbar-right nav-tabs" role="tablist">
                     <li role="presentation" class="active">
                         <a href="#questions" role="tab" data-toggle="tab">Questions</a>
@@ -40,8 +40,11 @@
                         <a href="#send" role="tab" data-toggle="tab">Send</a>
                     </li>
                     <li role="presentation">
-                        <a href="#history" role="tab" data-toggle="tab">History</a>
+                        <a href="#conversations" role="tab" data-toggle="tab">Conversations</a>
                     </li>
+                    <!--<li role="presentation">
+                        <a href="#history" role="tab" data-toggle="tab">History</a>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -60,30 +63,14 @@
             <div role="tabpanel" class="tab-pane" id="send">
                 {{> page_send }}
             </div>
-            <div role="tabpanel" class="tab-pane" id="history">
-                {{> page_history }}
+            <div role="tabpanel" class="tab-pane" id="conversations">
+                {{> page_conversations }}
             </div>
             <div role="tabpanel" class="tab-pane" id="ent_prof">
                 {{> page_ent_prof }}
             </div>
         </div>
     </div>
-
-    <!--    
-    {{> loginButtons}}
-  
-  <form class="new-question">
-  	<input type="text" name="text" placeholder="Survey question" class="form-control" />
-  	<button type="submit" class="btn btn-default">Add</button>
-  </form>
-  
-  <ul>
-  	{{#each questions}}
-  		{{> question}}     
-  	{{/each}}
-  </ul>
-
--->
 </body>
 
 <template name="question">

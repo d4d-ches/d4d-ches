@@ -4,96 +4,62 @@
 
     <!-- Your HTML here -->
 
-    <div class="row">
-        <div class="col-xs-6">
-            <!-- Entrepreneurs!!! -->
-            <strong>List of Entrepreneurs</strong> 
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
+    <form id="form-send">
+        <div class="row">
+            <div class="col-xs-6">
+                <!-- Entrepreneurs!!! -->
+                <strong>List of Entrepreneurs</strong> 
+                <div class="row">
+                    {{#each entrepreneurs}}
+                        {{> entrepreneur_send_template}}
+                    {{/each}}                
                 </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
+            </div>
+
+            <div class="col-xs-6">
+                <!-- Questions!!! -->
+                <strong>Questions</strong> 
+                <div class="row">
+                    {{#each questions}}
+                        {{> question_send_template}}
+                    {{/each}} 
                 </div>
             </div>
         </div>
-    
-        <div class="col-xs-6">
-            <!-- Questions!!! -->
-            <strong>Questions</strong> 
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            THIS IS A QUESTION?
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            THIS IS A QUESTION?
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            THIS IS A QUESTION?
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            THIS IS A QUESTION?
-                        </label>
-                    </div>
-                </div>
-                
-            </div>
+
+        <button type="submit" id="btn-send" class="btn btn-primary btn-lg btn-block">
+            <span class="glyphicon glyphicon-send"></span> Send
+        </button>
+        <div class="alert alert-success" id="send-confirmation">
+            <h3><span class="glyphicon glyphicon-ok"></span> Survey sent!</h3>
         </div>
-    </div>
-    
-    <div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                <span class="glyphicon glyphicon-send"></span> SEND!
-            </button>
-    </div>
+    </form>
 </template>
+
+<template name="entrepreneur_send_template">
+    
+    <div class="col-xs-12">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="entrepreneurs" value="{{_id}}">
+                {{name}}
+                @{{twitter}}
+            </label>
+        </div>
+    </div>
+    
+</template>
+
+<template name="question_send_template">
+    
+    <div class="col-xs-12">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="questions" value="{{_id}}">
+                {{question_text}}
+            </label>
+        </div>
+    </div>
+                
+</template>
+    

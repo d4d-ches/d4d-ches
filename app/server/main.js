@@ -3,21 +3,12 @@ Entrepreneurs = new Mongo.Collection("entrepreneurs");
 History = new Mongo.Collection("history");
 
 Accounts.config({
-    forbidClientAccountCreation: true
+    // forbidClientAccountCreation: true
 });
 
 
 var twitter = new TwitterApi();
 Meteor.methods({
-    search: function () {
-      return twitter.search("harvard");
-    },
-    run: function(){
-        return twitter;
-    },
-    bet: function(){
-        return 5;
-    },
     /**
         Posts a direct message with the given message and recipient.
         params:

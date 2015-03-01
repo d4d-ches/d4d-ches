@@ -6,7 +6,7 @@
     <select>
 	{{#each entrepreneurs}}
 		<option>
-			hi
+			test
 	   		{{name}}
 		</option>
 	{{/each}}

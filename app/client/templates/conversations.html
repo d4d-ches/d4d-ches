@@ -2,31 +2,100 @@
     <h2>Conversations</h2> 
     <div class="select-entrepreneur">
         <h4>Select An Entrepreneur</h4>
-
-    <select>
-	{{#each entrepreneurs}}
-		<option>
-			test
-	   		{{name}}
-		</option>
-	{{/each}}
-    </select>
-</div>
-    Hey
-
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="well">
-                From you!
-            </div>
-        </div>
+        <select style="width: auto">
+            <option default>Select one...</option>
+    	{{#each entrepreneurs}}
+    	    <!-- <option value={{name}}> -->
+            <option>{{name}}</option>
+    	{{/each}}
+        </select>
     </div>
-
-    <div class="row">
-        <div class="col-xs-6 col-xs-push-6">
-            <div class="well">
-                From them!
+    <!-- TODO make the following div hidden until entrepreneur is selected, load that conversation-->
+    <div>
+        <br>
+        <h5>Your Conversation with {{name}}:</h5>
+        <br>
+        <div id="conversations-thread" style="overflow-y:auto; overflow-x:hidden; height:600px; width:auto">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="well">
+                        From you!
+                    </div>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-xs-push-5">
+                    <div class="well">
+                        From them!
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="well">
+                        Just
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-xs-push-5">
+                    <div class="well">
+                        testing
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="well">
+                        the
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-xs-push-5">
+                    <div class="well">
+                        overflow
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="well">
+                        scrolling.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-xs-push-5">
+                    <div class="well">
+                        *To be
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="well">
+                        replaced by
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-xs-push-5">
+                    <div class="well">
+                        actual conversations*
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>

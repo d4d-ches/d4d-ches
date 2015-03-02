@@ -1,68 +1,9 @@
 <template name="page_history">
     <h2>History</h2>
-    
+
     <strong>Date</strong>
-
-<!--This is the style for the table part of the page. I have to lign everything up, and maybe have this next to the date section
-but don't know how the room allocation works and what not. Just need everything to fit appropriately, however.-->
-<style>
-    table {
-  border-collapse: separate;
-  border-spacing: 0;
-  color: #4a4a4d;
-  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-th,
-td {
-  padding: 10px 15px;
-  vertical-align: middle;
-}
-thead {
-  background: #395870;
-  background: linear-gradient(#49708f, #293f50);
-  color: #fff;
-  font-size: 11px;
-  text-transform: uppercase;
-}
-th:first-child {
-  border-top-left-radius: 5px;
-  text-align: left;
-}
-th:last-child {
-  border-top-right-radius: 5px;
-}
-tbody tr:nth-child(even) {
-  background: #f0f0f2;
-}
-td {
-  border-bottom: 1px solid #cecfd5;
-  border-right: 1px solid #cecfd5;
-}
-td:first-child {
-  border-left: 1px solid #cecfd5;
-}
-.book-title {
-  color: #395870;
-  display: block;
-}
-.text-offset {
-  color: #7c7c80;
-  font-size: 12px;
-}
-.item-stock,
-.item-qty {
-  text-align: center;
-}
-.item-price {
-  text-align: right;
-}
-.item-multiple {
-  display: block;
-}
-</style>
-
 <!--This is the entire date section of the page, which is not very efficient and I want to change.-->
-<select multiple class="form-control">
+<select class="form-control">
   <option>January</option>
   <option>February</option>
   <option>March</option>
@@ -77,9 +18,9 @@ td:first-child {
   <option>December</option>
 </select>
 
-<br> 
+<br>
 
-<select multiple class="form-control">
+<select class="form-control">
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -113,21 +54,21 @@ td:first-child {
   <option>31</option>
 </select>
 
-<br> 
+<br>
 
-<select multiple class="form-control">
+<select class="form-control">
   <option>2015</option>
 </select>
 
 <br>
 
 <!--This is the table below the date section that don't have the headings ligned up with the data-->
-<table>
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th scope="col" colspan="2">Entrepreneur Name</th>
-      <th scope="col" colspan="2">Questions</th>
-      <th scope="col"># of Times Sent</th>
+      <th>Entrepreneur Name</th>
+      <th>Questions</th>
+      <th># of Times Sent</th>
     </tr>
   </thead>
   <tbody>

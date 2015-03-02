@@ -34,6 +34,9 @@
                         <a href="#entrepreneurs" role="tab" data-toggle="tab">Entrepreneurs</a>
                     </li>
                     <li role="presentation">
+                        <a href="#ent_prof" role="tab" data-toggle="tab">Entrepreneur Profiles</a>
+                    </li>
+                    <li role="presentation">
                         <a href="#send" role="tab" data-toggle="tab">Send</a>
                     </li>
                     <li role="presentation">
@@ -65,25 +68,12 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="history">
                 {{> page_history }}
+	    </div>
+            <div role="tabpanel" class="tab-pane" id="ent_prof">
+                {{> page_ent_prof }}
             </div>
         </div>
     </div>
-
-    <!--
-    {{> loginButtons}}
-
-  <form class="new-question">
-  	<input type="text" name="text" placeholder="Survey question" class="form-control" />
-  	<button type="submit" class="btn btn-default">Add</button>
-  </form>
-
-  <ul>
-  	{{#each questions}}
-  		{{> question}}
-  	{{/each}}
-  </ul>
-
--->
 </body>
 
 <template name="question">

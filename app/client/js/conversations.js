@@ -7,6 +7,7 @@ Template.page_conversations.helpers({
     }
 });
 
+// TODO need function to make conversations show only when choice selected
 Template.page_conversations.events({
     'change #entrepreneur-chooser': function(){
         var name = $('#entrepreneur-chooser').val();

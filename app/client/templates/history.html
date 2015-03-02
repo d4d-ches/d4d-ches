@@ -1,7 +1,173 @@
 <template name="page_history">
     <h2>History</h2>
     
-    <strong>Anmol "Iron Fist" Gupta</strong>
-    
-    <!-- Your HTML here -->
+    <strong>Date</strong>
+
+<!--This is the style for the table part of the page. I have to lign everything up, and maybe have this next to the date section
+but don't know how the room allocation works and what not. Just need everything to fit appropriately, however.-->
+<style>
+    table {
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #4a4a4d;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+th,
+td {
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+thead {
+  background: #395870;
+  background: linear-gradient(#49708f, #293f50);
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+th:first-child {
+  border-top-left-radius: 5px;
+  text-align: left;
+}
+th:last-child {
+  border-top-right-radius: 5px;
+}
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+.book-title {
+  color: #395870;
+  display: block;
+}
+.text-offset {
+  color: #7c7c80;
+  font-size: 12px;
+}
+.item-stock,
+.item-qty {
+  text-align: center;
+}
+.item-price {
+  text-align: right;
+}
+.item-multiple {
+  display: block;
+}
+</style>
+
+<!--This is the entire date section of the page, which is not very efficient and I want to change.-->
+<select multiple class="form-control">
+  <option>January</option>
+  <option>February</option>
+  <option>March</option>
+  <option>April</option>
+  <option>May</option>
+  <option>June</option>
+  <option>July</option>
+  <option>August</option>
+  <option>September</option>
+  <option>October</option>
+  <option>November</option>
+  <option>December</option>
+</select>
+
+<br> 
+
+<select multiple class="form-control">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+  <option>6</option>
+  <option>7</option>
+  <option>8</option>
+  <option>9</option>
+  <option>10</option>
+  <option>11</option>
+  <option>12</option>
+   <option>13</option>
+  <option>14</option>
+  <option>15</option>
+  <option>16</option>
+  <option>17</option>
+  <option>18</option>
+  <option>19</option>
+  <option>20</option>
+  <option>21</option>
+  <option>22</option>
+  <option>23</option>
+  <option>24</option>
+	<option>25</option>
+  <option>26</option>
+  <option>27</option>
+  <option>28</option>
+  <option>29</option>
+  <option>30</option>
+  <option>31</option>
+</select>
+
+<br> 
+
+<select multiple class="form-control">
+  <option>2015</option>
+</select>
+
+<br>
+
+<!--This is the table below the date section that don't have the headings ligned up with the data-->
+<table>
+  <thead>
+    <tr>
+      <th scope="col" colspan="2">Entrepreneur Name</th>
+      <th scope="col" colspan="2">Questions</th>
+      <th scope="col"># of Times Sent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong class="book-title">Chuck Norris</strong>
+      </td>
+      <td class="item-Questions">How successful has your business been so far in Haiti after you quit your acting career?</td>
+      <td class="item-# of Times Sent">1</td>
+    </tr>
+    <tr>
+      <td>
+        <strong class="book-title">Barrack Obama</strong>
+      </td>
+      <td class="item-Questions">When are you going to Visit Harvard and give a speech, so I can attend?</td>
+      <td class="item-# of Times Sent">2</td>
+    </tr>
+    <tr>
+      <td>
+        <strong class="book-title">Neel Mehta</strong>
+      </td>
+      <td class="item-Questions">Are you going to be the next Bill Gates or Steve Jobs? (But the Indian version)</td>
+      <td class="item-# of Times Sent">1</td>
+    </tr>
+    <tr>
+      <td>
+        <strong class="book-title">Jesus Smith</strong>
+      </td>
+      <td class="item-Questions">When are you going to grow out a sweet beard like Jesus used to have?</td>
+      <td class="item-# of Times Sent">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--This is the checkboxes on the bottom of the page that don't make any sense.-->
+<div align="center"><br>
+<input type="checkbox" name="option1" value="Milk"> Milk<br>
+<input type="checkbox" name="option2" value="Butter" checked> Butter<br>
+<input type="checkbox" name="option3" value="Cheese"> Cheese<br>
+<br>
+</div>
+
 </template>

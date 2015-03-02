@@ -3,3 +3,5 @@ Template.page_conversations.helpers({
         return Entrepreneurs.find({});
     }
 });
+
+// TODO need function to make conversations show only when choice selected

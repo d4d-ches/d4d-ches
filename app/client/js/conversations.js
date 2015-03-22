@@ -3,14 +3,28 @@ Template.page_conversations.helpers({
         return Entrepreneurs.find({});
     },
     chosen: function(){
-        return Session.get('chosenEntrepreneur');
+        var entrepreneur = Session.get('chosenEntrepreneur');
+        if(entrepreneur){
+            return entrepreneur.name;
+        }
+        else {
+            return "";
+        }
+    },
+    messagesFromChosen: function(){
+        var entrepreneur = Session.get('chosenEntrepreneur');
+        if(entrepreneur){
+            var twitter = entrepreneur.twitter;
+            return Received.find({
+                sender_screen_name: twitter
+            });
+        }
+        else {
+            return null;
+        }
     },
 
     all_received_messages: function(){
-        // load any new messages, and show them all
-        // Received will update whenever loadDirectMessages is finished
-        // so asynchronousness doesn't matter
-        Meteor.call('loadDirectMessages');
         return Received.find({});
     }
 });
@@ -18,7 +32,9 @@ Template.page_conversations.helpers({
 // TODO need function to make conversations show only when choice selected
 Template.page_conversations.events({
     'change #entrepreneur-chooser': function(){
-        var name = $('#entrepreneur-chooser').val();
-        Session.set('chosenEntrepreneur', name);
+        // deduce entrepreneur from twitter handle
+        var twitter = $('#entrepreneur-chooser').val();
+        var entrepreneur = Entrepreneurs.findOne({twitter: twitter});
+        Session.set('chosenEntrepreneur', entrepreneur);
     }
 });

@@ -17,7 +17,7 @@
         <select style="width: auto" id="entrepreneur-chooser">
             <option default value="">Select one...</option>
     	{{#each entrepreneurs}}
-            <option value="{{name}}">{{name}}</option>
+            <option value="{{twitter}}">{{name}}</option>
     	{{/each}}
         </select>
     </div>
@@ -26,6 +26,14 @@
         <div>
             <br>
             <h5>Your Conversation with {{chosen}}:</h5>
+
+            <div class="well">
+                <strong>DEV: here are all the messages {{chosen}} sent to you:</strong>
+                {{#each messagesFromChosen}}
+                    <p>{{text}}</p>
+                {{/each}}
+            </div>
+
             <br>
             <div id="conversations-thread" style="overflow-y:auto; overflow-x:hidden; height:600px; width:auto">
                 <div class="row">

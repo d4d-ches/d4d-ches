@@ -16,13 +16,24 @@ Meteor.methods({
             String recipient    The Twitter handle of the recipient
             String message      The text (max. 140 chars; ensure this yourself) to send
         returns:
-            None
+            true if the Twitter query succeeded, false if failed.
     */
     sendDirectMessage: function(params){
-        return twitter.post('direct_messages/new.json', {
+        var result = twitter.post('direct_messages/new.json', {
             screen_name: params.recipient,
             text: params.message
         });
+        if(result && result.data){
+            // the sent message = result.data
+            var message = result.data;
+            message._id = message.id_str;
+            History.insert(message);
+            
+            return true;
+        }
+        else {
+            return false;
+        }
     },
     /**
         Retrieves the latest direct messages sent to the user and loads them into the Received database.

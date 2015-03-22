@@ -1,6 +1,12 @@
 <template name="page_history">
     <h2>History</h2>
 
+    <div class="well">
+        {{#each all}}
+            {{text}}
+        {{/each}}
+    </div>
+
     <strong>Date</strong>
 <!--This is the entire date section of the page, which is not very efficient and I want to change.-->
 <select class="form-control">

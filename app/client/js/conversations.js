@@ -23,6 +23,18 @@ Template.page_conversations.helpers({
             return null;
         }
     },
+    messagesToChosen: function(){
+        var entrepreneur = Session.get('chosenEntrepreneur');
+        if(entrepreneur){
+            var twitter = entrepreneur.twitter;
+            return History.find({
+                recipient_screen_name: twitter
+            });
+        }
+        else {
+            return null;
+        }
+    },
 
     all_received_messages: function(){
         return Received.find({});

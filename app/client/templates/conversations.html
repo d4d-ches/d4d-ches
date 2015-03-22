@@ -33,6 +33,12 @@
                     <p>{{text}}</p>
                 {{/each}}
             </div>
+            <div class="well">
+                <strong>DEV: here are all the messages you sent to {{chosen}}:</strong>
+                {{#each messagesToChosen}}
+                    <p>{{text}}</p>
+                {{/each}}
+            </div>
 
             <br>
             <div id="conversations-thread" style="overflow-y:auto; overflow-x:hidden; height:600px; width:auto">

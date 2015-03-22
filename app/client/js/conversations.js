@@ -4,6 +4,14 @@ Template.page_conversations.helpers({
     },
     chosen: function(){
         return Session.get('chosenEntrepreneur');
+    },
+
+    all_received_messages: function(){
+        // load any new messages, and show them all
+        // Received will update whenever loadDirectMessages is finished
+        // so asynchronousness doesn't matter
+        Meteor.call('loadDirectMessages');
+        return Received.find({});
     }
 });
 

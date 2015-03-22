@@ -1,6 +1,7 @@
 Questions = new Mongo.Collection("questions");
 Entrepreneurs = new Mongo.Collection("entrepreneurs");
 History = new Mongo.Collection("history");
+Received = new Mongo.Collection("received");
 
 Accounts.config({
     // forbidClientAccountCreation: true
@@ -14,6 +15,8 @@ Meteor.methods({
         params:
             String recipient    The Twitter handle of the recipient
             String message      The text (max. 140 chars; ensure this yourself) to send
+        returns:
+            None
     */
     sendDirectMessage: function(params){
         return twitter.post('direct_messages/new.json', {
@@ -21,29 +24,47 @@ Meteor.methods({
             text: params.message
         });
     },
-    getDirectMessages: function(){
-        return twitter.get('direct_messages.json');
+    /**
+        Retrieves the latest direct messages sent to the user and loads them into the Received database.
+        params:
+            None
+        returns:
+            true if the Twitter query succeeded, false if failed.
+            If it failed, the Received database should still be OK!
+    */
+    loadDirectMessages: function(){
+        var result = twitter.get('direct_messages.json', {
+            count: 200 // get as many as possible
+        });
+        if(result && result.data){
+            var messages = result.data;
+            // put any new messages into Received database
+            // new messages aren't in the database yet
+            // new messages will always come before old ones
+
+            for(var i = 0; i < messages.length; i++){
+                var message = messages[i];
+                if(Received.findOne({id_str: message.id_str}) === undefined){
+                    // this isn't in database so add it
+                    console.log("Inserting message #" + message.id_str);
+                    message._id = message.id_str;
+                    Received.insert(message);
+                }
+                else {
+                    // it's in database; all future messages will also be in database
+                    break;
+                }
+            }
+
+            return true;
+        }
+        else {
+            // failed
+            return false;
+        }
+    },
+
+    flushDMs: function(){
+        Received.remove({});
     }
 });
-
-/*
-Meteor.methods({
-    test: function(){
-        var Twit = Meteor.npmRequire('twit');
-
-        var T = new Twit({
-            consumer_key:         'BXFSdIp8GliNro3dcYULg4UYd'
-          , consumer_secret:      'ET1fWXCknxlQL65qMzXDLYoODFKoJ34zPM4jmqngwlOwDnMp2S'
-          , access_token:         '2849952455-weMu06rs7pWlSkXg0tpTkYuqy4y5KCFh9NoTpyR'
-          , access_token_secret:  'yGEVlRmiTmFE3syHC97pwZfunMcEOg2PW8GDZC8eVmHp4'
-        });
-
-        //
-        //  tweet 'hello world!'
-        //
-        T.post('statuses/update', { status: 'hello world!' }, function(err, data, response) {
-          console.log(data)
-        });
-    }
-});
-*/

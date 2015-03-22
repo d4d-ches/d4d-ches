@@ -1,12 +1,13 @@
 Questions = new Mongo.Collection("questions");
 Entrepreneurs = new Mongo.Collection("entrepreneurs");
 History = new Mongo.Collection("history");
+Received = new Mongo.Collection("received");
 
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY",
 });
 Accounts.config({
-    forbidClientAccountCreation: true 
+    forbidClientAccountCreation: true
 });
 
 test = function() {
@@ -17,7 +18,7 @@ test = function() {
 run = function(name){
     if(!name) name = 'run';
     Meteor.call(name, function(error, result){
-        console.log(R = JSON.parse(result.content)); 
+        console.log(R = JSON.parse(result.content));
     });
 }
 
@@ -29,8 +30,7 @@ sendSurvey = function(questions, recipients){
    $.each(questions, function(key, question){
         $.each(recipients, function(key, recipient){
             console.log("Send " + question.question_text + " to " + recipient.twitter);
-            
-            
+
             var params = {
                 recipient: recipient.twitter,
                 message: question.question_text
@@ -39,7 +39,7 @@ sendSurvey = function(questions, recipients){
                 console.log(error);
                 console.log(result);
             });
-            
+
         });
     });
 }

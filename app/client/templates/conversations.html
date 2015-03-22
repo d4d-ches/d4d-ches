@@ -1,5 +1,17 @@
 <template name="page_conversations">
     <h2>Conversations</h2>
+
+    {{#each all_received_messages}}
+        <blockquote>
+        <p>
+            {{text}}
+        </p>
+        <footer>
+            {{sender.name}} (@{{sender_screen_name}})
+        </footer>
+        </blockquote>
+    {{/each}}
+
     <div class="select-entrepreneur">
         <h4>Select An Entrepreneur</h4>
         <select style="width: auto" id="entrepreneur-chooser">

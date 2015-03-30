@@ -23,20 +23,54 @@
     	{{/each}}
         </select>
     </div>
+    
+    {{#if chosen}}
+        <div class="well">
+            <h3>Entrepreneur Profile for {{chosen.name}}</h3>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{chosen.name}}</td>
+                    </tr>
+                    <tr>
+                        <td> Phone # </td>
+                        <td>{{chosen.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td> Twitter Handle </td>
+                        <td>{{chosen.twitter}}</td>
+                    </tr>
+                    <tr>
+                        <td> Company Name </td>
+                        <td>{{chosen.company}}</td>
+                    </tr>
+                    <tr>
+                        <td> Company Location </td>
+                        <td>{{chosen.location}}</td>
+                    </tr>
+                    <tr>
+                        <td> Company Field </td>
+                        <td>{{chosen.field}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {{/if}}
 
     {{#if chosen}}
         <div>
             <br>
-            <h5>Your Conversation with {{chosen}}:</h5>
+            <h5>Your Conversation with {{chosen.name}}:</h5>
 
             <div class="well">
-                <strong>DEV: here are all the messages {{chosen}} sent to you:</strong>
+                <strong>DEV: here are all the messages {{chosen.name}} sent to you:</strong>
                 {{#each messagesFromChosen}}
                     <p>{{text}}</p>
                 {{/each}}
             </div>
             <div class="well">
-                <strong>DEV: here are all the messages you sent to {{chosen}}:</strong>
+                <strong>DEV: here are all the messages you sent to {{chosen.name}}:</strong>
                 {{#each messagesToChosen}}
                     <p>{{text}}</p>
                 {{/each}}

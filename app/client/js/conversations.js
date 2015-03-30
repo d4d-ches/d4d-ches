@@ -3,13 +3,7 @@ Template.page_conversations.helpers({
         return Entrepreneurs.find({});
     },
     chosen: function(){
-        var entrepreneur = Session.get('chosenEntrepreneur');
-        if(entrepreneur){
-            return entrepreneur.name;
-        }
-        else {
-            return "";
-        }
+        return Session.get('chosenEntrepreneur');
     },
     messagesFromChosen: function(){
         var entrepreneur = Session.get('chosenEntrepreneur');

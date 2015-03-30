@@ -25,37 +25,34 @@
     </div>
     
     {{#if chosen}}
-        <div class="well">
-            <h3>Entrepreneur Profile for {{chosen.name}}</h3>
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>{{chosen.name}}</td>
-                    </tr>
-                    <tr>
-                        <td> Phone # </td>
-                        <td>{{chosen.phone}}</td>
-                    </tr>
-                    <tr>
-                        <td> Twitter Handle </td>
-                        <td>{{chosen.twitter}}</td>
-                    </tr>
-                    <tr>
-                        <td> Company Name </td>
-                        <td>{{chosen.company}}</td>
-                    </tr>
-                    <tr>
-                        <td> Company Location </td>
-                        <td>{{chosen.location}}</td>
-                    </tr>
-                    <tr>
-                        <td> Company Field </td>
-                        <td>{{chosen.field}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="panel panel-primary">
+          <!-- Default panel contents -->
+          <div class="panel-heading">
+                <h2>Entrepreneur Profile for {{chosen.name}}</h2>
+            </div>
+
+          <!-- Table (I will also center and make headers larger)-->
+          <table class="table table-striped">
+              <tr>
+                  <p class="bg-info">Contact Information</p>
+              </tr>
+              <tr>
+                  {{chosen.phone}}
+              </tr>
+              <tr>
+                  {{chosen.twitter}}
+              </tr>
+              <tr>
+                  <p class="bg-info">Company Information</p>
+              </tr>
+              <tr>
+                  <tr>Name: {{chosen.company}}</tr>
+                  <tr>Location: {{chosen.location}}</tr>
+                  <tr>Field: {{chosen.field}}</tr>
+              </tr>
+          </table>
         </div>
+
     {{/if}}
 
     {{#if chosen}}

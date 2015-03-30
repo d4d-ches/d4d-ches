@@ -23,20 +23,51 @@
     	{{/each}}
         </select>
     </div>
+    
+    {{#if chosen}}
+        <div class="panel panel-primary">
+          <!-- Default panel contents -->
+          <div class="panel-heading">
+                <h2>Entrepreneur Profile for {{chosen.name}}</h2>
+            </div>
+
+          <!-- Table (I will also center and make headers larger)-->
+          <table class="table table-striped">
+              <tr>
+                  <p class="bg-info">Contact Information</p>
+              </tr>
+              <tr>
+                  {{chosen.phone}}
+              </tr>
+              <tr>
+                  {{chosen.twitter}}
+              </tr>
+              <tr>
+                  <p class="bg-info">Company Information</p>
+              </tr>
+              <tr>
+                  <tr>Name: {{chosen.company}}</tr>
+                  <tr>Location: {{chosen.location}}</tr>
+                  <tr>Field: {{chosen.field}}</tr>
+              </tr>
+          </table>
+        </div>
+
+    {{/if}}
 
     {{#if chosen}}
         <div>
             <br>
-            <h5>Your Conversation with {{chosen}}:</h5>
+            <h5>Your Conversation with {{chosen.name}}:</h5>
 
             <div class="well">
-                <strong>DEV: here are all the messages {{chosen}} sent to you:</strong>
+                <strong>DEV: here are all the messages {{chosen.name}} sent to you:</strong>
                 {{#each messagesFromChosen}}
                     <p>{{text}}</p>
                 {{/each}}
             </div>
             <div class="well">
-                <strong>DEV: here are all the messages you sent to {{chosen}}:</strong>
+                <strong>DEV: here are all the messages you sent to {{chosen.name}}:</strong>
                 {{#each messagesToChosen}}
                     <p>{{text}}</p>
                 {{/each}}

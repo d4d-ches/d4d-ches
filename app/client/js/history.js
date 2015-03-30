@@ -2,7 +2,7 @@ Template.page_history.helpers({
     all: function(){
         return History.find({});
     },
-    
+
     filtered: function(){
     	var date = Session.get('date');
     	if(!date){
@@ -23,7 +23,13 @@ Template.page_history.events({
 		var month = form.find('#history-month').val();
 		var day = form.find('#history-day').val();
 		var year = form.find('#history-year').val();
-		var date = month + " " + day + ", " + year;
+        var date = moment(new Date(month + " " + day + ", " + year)).format("MMMM D, YYYY");
 		Session.set('date', date);
-	}
+
+        return false;
+	},
+    'click #clear-filter': function(event){
+        Session.set('date', null);
+        return false;
+    }
 });

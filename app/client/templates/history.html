@@ -5,7 +5,7 @@
         <strong>DEV: all sent messages</strong>
         {{#each all}}
             <p>{{text}}</p>
-            <p>at {{created_at}}</p>
+            <p>at {{created_at}} ({{sent}})</p>
             <p>to {{recipient_screen_name}}</p>
         {{/each}}
     </div>
@@ -79,6 +79,9 @@
 <button class="btn btn-primary" type="submit">
 	Filter
 </button>
+<button id="clear-filter" class="btn btn-default">
+    Clear
+</button>
 </form>
 
 
@@ -94,8 +97,8 @@
     </tr>
   </thead>
   <tbody>
-  	
-  	{{#each all}}
+
+  	{{#each filtered}}
   		<tr>
   			<td>
         		<strong class="book-title">{{recipient_screen_name}}</strong>
@@ -104,7 +107,7 @@
       		<td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Yes<br></td>
   		</tr>
   	{{/each}}
-  
+
 
   </tbody>
 </table>

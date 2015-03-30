@@ -26,9 +26,12 @@ Meteor.methods({
         if(result && result.data){
             // the sent message = result.data
             var message = result.data;
+
             message._id = message.id_str;
+            message.sent = moment(new Date(message.created_at)).format("MMMM D, YYYY");
+
             History.insert(message);
-            
+
             return true;
         }
         else {
@@ -77,5 +80,37 @@ Meteor.methods({
 
     flushDMs: function(){
         Received.remove({});
+    },
+
+    /*
+        Auto-translates the given text to English.
+        Returns { text: String } if successful, or { error: String } if error.
+    */
+    translateToEnglish: function(text){
+        var bing = Meteor.npmRequire('bingtranslator');
+        var credentials = {
+            clientId: 'd4d_ches',
+            clientSecret: 'VAiLgH+S9Qpj3lImoMsC+nInfp8mbngKbfRhBXA0JTE='
+        };
+        // result = { error: String } or { text: String}
+        var result = Async.runSync(function(done){
+            translator.detect(credentials, text, function(err, from){
+                if(err){
+                    done({ error: err });
+                }
+                else {
+                    bing.translate(credentials, text, from, 'en', function(err, translated){
+                        if(err){
+                            done({ error: err });
+                        }
+                        else {
+                            done({ text: translated });
+                        }
+                    });
+                }
+            });
+        });
+
+        return result;
     }
 });

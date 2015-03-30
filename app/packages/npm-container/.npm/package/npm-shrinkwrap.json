@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "bingtranslator": {
+      "version": "0.0.7"
+    },
     "github": {
       "version": "0.1.8"
     },

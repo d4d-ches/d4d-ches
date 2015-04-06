@@ -1,73 +1,89 @@
 <template name="page_history">
     <h2>History</h2>
 
-    <!--
     <div class="well">
         <strong>DEV: all sent messages</strong>
         {{#each all}}
             <p>{{text}}</p>
+            <p>at {{created_at}} ({{sent}})</p>
+            <p>to {{recipient_screen_name}}</p>
         {{/each}}
     </div>
--->
 
     <strong>Date</strong>
-<!--This is the entire date section of the page, which is not very efficient and I want to change.-->
-<select class="form-control">
-  <option>January</option>
-  <option>February</option>
-  <option>March</option>
-  <option>April</option>
-  <option>May</option>
-  <option>June</option>
-  <option>July</option>
-  <option>August</option>
-  <option>September</option>
-  <option>October</option>
-  <option>November</option>
-  <option>December</option>
-</select>
 
-<br>
+<!--This is the drop down for the month on the left side of the page-->
+<form id="history-filter">
+<div class="row">
+  <div class="col-md-4">
+  <select class="form-control" id="history-month">
+  	<option>January</option>
+  	<option>February</option>
+  	<option>March</option>
+  	<option>April</option>
+  	<option>May</option>
+  	<option>June</option>
+  	<option>July</option>
+  	<option>August</option>
+  	<option>September</option>
+  	<option>October</option>
+  	<option>November</option>
+  	<option>December</option>
+  </select>
+</div>
 
-<select class="form-control">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-  <option>6</option>
-  <option>7</option>
-  <option>8</option>
-  <option>9</option>
-  <option>10</option>
-  <option>11</option>
-  <option>12</option>
-   <option>13</option>
-  <option>14</option>
-  <option>15</option>
-  <option>16</option>
-  <option>17</option>
-  <option>18</option>
-  <option>19</option>
-  <option>20</option>
-  <option>21</option>
-  <option>22</option>
-  <option>23</option>
-  <option>24</option>
-	<option>25</option>
-  <option>26</option>
-  <option>27</option>
-  <option>28</option>
-  <option>29</option>
-  <option>30</option>
-  <option>31</option>
-</select>
+<div class="col-md-4">
+  <select class="form-control" id="history-day">
+  	<option>1</option>
+  	<option>2</option>
+  	<option>3</option>
+  	<option>4</option>
+  	<option>5</option>
+  	<option>6</option>
+  	<option>7</option>
+  	<option>8</option>
+  	<option>9</option>
+  	<option>10</option>
+  	<option>11</option>
+  	<option>12</option>
+  	<option>13</option>
+  	<option>14</option>
+  	<option>15</option>
+  	<option>16</option>
+  	<option>17</option>
+  	<option>18</option>
+  	<option>19</option>
+  	<option>20</option>
+  	<option>21</option>
+  	<option>22</option>
+  	<option>23</option>
+  	<option>24</option>
+  	<option>25</option>
+  	<option>26</option>
+  	<option>27</option>
+  	<option>28</option>
+  	<option>29</option>
+  	<option>30</option>
+  	<option>31</option>
+  </select>
+</div>
 
-<br>
 
-<select class="form-control">
-  <option>2015</option>
-</select>
+  <div class="col-md-4">
+  	<select class="form-control" id="history-year">
+  		<option>2015</option>
+	</select>
+  </div>
+</div>
+
+<button class="btn btn-primary" type="submit">
+	Filter
+</button>
+<button id="clear-filter" class="btn btn-default">
+    Clear
+</button>
+</form>
+
 
 <br>
 
@@ -77,47 +93,24 @@
     <tr>
       <th>Entrepreneur Name</th>
       <th>Questions</th>
-      <th># of Times Sent</th>
+      <th>Send Reminder</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>
-        <strong class="book-title">Chuck Norris</strong>
-      </td>
-      <td class="item-Questions">How successful has your business been so far in Haiti after you quit your acting career?</td>
-      <td class="item-# of Times Sent">1</td>
-    </tr>
-    <tr>
-      <td>
-        <strong class="book-title">Barrack Obama</strong>
-      </td>
-      <td class="item-Questions">When are you going to Visit Harvard and give a speech, so I can attend?</td>
-      <td class="item-# of Times Sent">2</td>
-    </tr>
-    <tr>
-      <td>
-        <strong class="book-title">Neel Mehta</strong>
-      </td>
-      <td class="item-Questions">Are you going to be the next Bill Gates or Steve Jobs? (But the Indian version)</td>
-      <td class="item-# of Times Sent">1</td>
-    </tr>
-    <tr>
-      <td>
-        <strong class="book-title">Jesus Smith</strong>
-      </td>
-      <td class="item-Questions">When are you going to grow out a sweet beard like Jesus used to have?</td>
-      <td class="item-# of Times Sent">1</td>
-    </tr>
+
+  	{{#each filtered}}
+  		<tr>
+  			<td>
+        		<strong class="book-title">{{recipient_screen_name}}</strong>
+      		</td>
+      		<td class="item-Questions">{{text}}</td>
+      		<td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Yes<br></td>
+  		</tr>
+  	{{/each}}
+
+
   </tbody>
 </table>
 
-<!--This is the checkboxes on the bottom of the page that don't make any sense.-->
-<div align="center"><br>
-<input type="checkbox" name="option1" value="Milk"> Milk<br>
-<input type="checkbox" name="option2" value="Butter" checked> Butter<br>
-<input type="checkbox" name="option3" value="Cheese"> Cheese<br>
-<br>
-</div>
 
 </template>

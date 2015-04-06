@@ -60,100 +60,27 @@
             <br>
             <h5>Your Conversation with {{chosen.name}}:</h5>
 
-            <div class="well">
-                <strong>DEV: here are all the messages {{chosen.name}} sent to you:</strong>
-                {{#each messagesFromChosen}}
-                    <p>{{text}}</p>
-                {{/each}}
-            </div>
-            <div class="well">
-                <strong>DEV: here are all the messages you sent to {{chosen.name}}:</strong>
-                {{#each messagesToChosen}}
-                    <p>{{text}}</p>
-                {{/each}}
-            </div>
-
             <br>
             <div id="conversations-thread" style="overflow-y:auto; overflow-x:hidden; height:600px; width:auto">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            From you!
+                {{#each messagesConversation}}
+                    {{#if received}}
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="well">
+                                {{text}}
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            From them!
+                    {{else}}
+                    <div class="row">
+                        <div class="col-xs-6 col-xs-push-5">
+                            <div class="well">
+                                {{text}}
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            Just
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            testing
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            the
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            overflow
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            scrolling.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            *To be
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            replaced by
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            actual conversations*
-                        </div>
-                    </div>
-                </div>
+                    {{/if}}
+                {{/each}}
             </div>
         </div>
     {{/if}}

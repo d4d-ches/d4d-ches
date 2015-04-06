@@ -32,6 +32,16 @@ Template.page_conversations.helpers({
 
     all_received_messages: function(){
         return Received.find({});
+    },
+    
+    compile_check: function(){
+        return "hi";
+    }
+});
+
+Template.page_questions.helpers({
+    questions: function () {
+      return Questions.find({});
     }
 });
 

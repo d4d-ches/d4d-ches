@@ -28,13 +28,14 @@
         <div class="panel panel-primary">
           <!-- Default panel contents -->
           <div class="panel-heading">
-                <h2>Entrepreneur Profile for {{chosen.name}}</h2>
+                <p class="text-center"><h2>{{chosen.name}}</h2></p>
             </div>
 
           <!-- Table (I will also center and make headers larger)-->
-          <table class="table table-striped">
+    <p class = "text-center">     
+    <table class="table table-striped">
               <tr>
-                  <p class="bg-info">Contact Information</p>
+                  <p class="bg-info text-center"><h4>Contact Information</h4></p>
               </tr>
               <tr>
                   {{chosen.phone}}
@@ -43,14 +44,13 @@
                   {{chosen.twitter}}
               </tr>
               <tr>
-                  <p class="bg-info">Company Information</p>
+                  <p class="bg-info text-center"><h4>Company Information</h4></p>
               </tr>
-              <tr>
                   <tr>Name: {{chosen.company}}</tr>
                   <tr>Location: {{chosen.location}}</tr>
                   <tr>Field: {{chosen.field}}</tr>
-              </tr>
           </table>
+        </p>
         </div>
 
     {{/if}}

@@ -38,7 +38,7 @@ meteorhacks:npm@1.3.0
 minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
-momentjs:moment@2.9.0
+momentjs:moment@2.10.0
 mongo@1.1.0
 npm-bcrypt@0.7.8_2
 npm-container@1.0.0
@@ -61,6 +61,7 @@ spacebars-compiler@1.0.6
 srp@1.0.3
 templating@1.1.1
 tracker@1.0.7
+twbs:bootstrap@3.3.4
 twitter@1.1.4
 ui@1.0.6
 underscore@1.0.3

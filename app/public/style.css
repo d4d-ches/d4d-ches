@@ -1,0 +1,6 @@
+#conversations-thread{
+    overflow-y:auto;
+    overflow-x:hidden;
+    height:600px;
+    width:auto;
+}

@@ -48,9 +48,14 @@ Template.page_conversations.helpers({
     all_received_messages: function(){
         return Received.find({});
     },
-    
+
     compile_check: function(){
         return "hi";
+    },
+
+    format_date: function(raw_date){
+        // for all formats check: http://momentjs.com/
+        return moment(new Date(raw_date)).format('l');
     }
 });
 

@@ -1,7 +1,9 @@
+/*
 Questions = new Mongo.Collection("questions");
 Entrepreneurs = new Mongo.Collection("entrepreneurs");
 History = new Mongo.Collection("history");
 Received = new Mongo.Collection("received");
+*/
 
 Accounts.config({
     // forbidClientAccountCreation: true

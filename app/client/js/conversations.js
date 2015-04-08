@@ -30,19 +30,7 @@ Template.page_conversations.helpers({
         }
     },
     messagesConversation: function(){
-        var entrepreneur = Session.get('chosenEntrepreneur');
-        var to_chosen = messagesToChosen();
-        var from_chosen = messagesFromChosen();
-        var conversation = _.union(to_chosen, from_chosen);
-        var sorted = _.sortBy(conversation, function(item){
-            return -1 * moment(new Date(item.created_at)).unix();
-        });
-        _.each(sorted, function(message){
-            if (message.sender_screen_name === entrepreneur.twitter){
-                message.received = true;
-            };
-        });
-        return sorted;
+        return messagesConversation();
     },
 
     all_received_messages: function(){
@@ -75,6 +63,9 @@ Template.page_conversations.events({
     }
 });
 
+/**
+    Returns a list of all messages received from the chosen entrepreneur.
+*/
 function messagesFromChosen(){
     var entrepreneur = Session.get('chosenEntrepreneur');
     if(entrepreneur){
@@ -88,6 +79,9 @@ function messagesFromChosen(){
     }
 }
 
+/**
+    Returns a list of all messages sent to the chosen entrepreneur.
+*/
 function messagesToChosen(){
     var entrepreneur = Session.get('chosenEntrepreneur');
     if(entrepreneur){
@@ -99,4 +93,23 @@ function messagesToChosen(){
     else {
         return null;
     }
+}
+
+/**
+    Returns a sorted list of all messages exchanged between you and the chosen entrepreneur.
+*/
+function messagesConversation(){
+    var entrepreneur = Session.get('chosenEntrepreneur');
+    var to_chosen = messagesToChosen();
+    var from_chosen = messagesFromChosen();
+    var conversation = _.union(to_chosen, from_chosen);
+    var sorted = _.sortBy(conversation, function(item){
+        return -1 * moment(new Date(item.created_at)).unix();
+    });
+    _.each(sorted, function(message){
+        if (message.sender_screen_name === entrepreneur.twitter){
+            message.received = true;
+        };
+    });
+    return sorted;
 }

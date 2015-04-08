@@ -28,7 +28,6 @@ Meteor.methods({
             var message = result.data;
 
             message._id = message.id_str;
-            message.sent = moment(new Date(message.created_at)).format("MMMM D, YYYY");
 
             History.insert(message);
 

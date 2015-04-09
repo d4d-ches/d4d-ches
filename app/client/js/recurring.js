@@ -5,9 +5,9 @@ Template.page_recurring.helpers({
 
 });
 
-Template.page_send.events({
+Template.page_recurring.events({
     'submit #recurring-new': function(event){
-        var form = event.target;
+        var question = Questions.findOne({ _id: $('#recurring-question').val() });
 
         /*
             TODO

@@ -7,7 +7,8 @@ Template.page_recurring.helpers({
 
 Template.page_recurring.events({
     'submit #recurring-new': function(event){
-        var question = Questions.findOne({ _id: $('#recurring-question').val() });
+        var questionId = $('#recurring-question').val();
+        var timing = $('#recurring-every').val();
 
         /*
             TODO

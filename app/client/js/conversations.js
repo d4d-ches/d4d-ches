@@ -44,6 +44,10 @@ Template.page_conversations.helpers({
     format_date: function(raw_date){
         // for all formats check: http://momentjs.com/
         return moment(new Date(raw_date)).format('l');
+    },
+
+    to_csv: function(){
+        return messagesToCSV();
     }
 });
 
@@ -112,4 +116,16 @@ function messagesConversation(){
         };
     });
     return sorted;
+}
+
+/**
+    Convert the output of messagesConversation() in conversations.js into CSV format (sender, recipient, timestamp, text)
+*/
+function messagesToCSV(){
+    var tweets = messagesConversation();
+    var lines = _.map(tweets, function(tweet){
+        return [tweet.sender_screen_name, tweet.recipient_screen_name, tweet.text,      tweet.created_at].join(",");
+    });
+    var text = lines.join("\n");
+    return text;
 }

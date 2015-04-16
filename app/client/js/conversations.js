@@ -47,7 +47,7 @@ Template.page_conversations.helpers({
     },
 
     to_csv: function(){
-        return "hey";
+        return messagesToCSV();
     }
 });
 
@@ -126,5 +126,6 @@ function messagesToCSV(){
     var lines = _.map(tweets, function(tweet){
         return [tweet.sender_screen_name, tweet.recipient_screen_name, tweet.text,      tweet.created_at].join(",");
     });
-    return lines
+    var text = lines.join("\n");
+    return text;
 }

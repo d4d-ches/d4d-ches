@@ -113,3 +113,14 @@ function messagesConversation(){
     });
     return sorted;
 }
+
+/**
+    Convert the output of messagesConversation() in conversations.js into CSV format (sender, recipient, timestamp, text)
+*/
+function messagesToCSV(){
+    var tweets = messagesConversation();
+    var lines = _.map(tweets, function(tweet){
+        return [tweet.sender_screen_name, tweet.recipient_screen_name, tweet.text,      tweet.created_at].join(",");
+    });
+    return lines
+}

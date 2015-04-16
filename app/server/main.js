@@ -140,3 +140,21 @@ function getAccessToken(callback){
 // Write function that grabs access token then uses that to translate example text
 // e.g.:
 // https://msdn.microsoft.com/en-us/library/ff512385.aspx
+function translateToCreole(token){
+    HTTP.get(
+        "http://api.microsofttranslator.com/V2/Http.svc/Translate/",
+        {
+            data: {
+                appId: "Bearer " + token,
+                text: "hello world (example text)",
+                from: "en",
+                to: "ht",
+                contentType: "text/plain"
+            }
+        },
+        function(outdata){
+            // TODO add to database
+            return outdata
+        }
+    );
+}

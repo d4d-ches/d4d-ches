@@ -115,3 +115,28 @@ Meteor.methods({
         return result;
     }
 });
+
+/**
+    Requests an acccess token, and calls callback(token) when received.
+*/
+function getAccessToken(callback){
+    HTTP.post(
+        "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13/",
+        {
+            data: {
+                client_id: "d4d_ches",
+                client_secret: "VAiLgH+S9Qpj3lImoMsC+nInfp8mbngKbfRhBXA0JTE=",
+                scope: "http://api.microsofttranslator.com",
+                grant_type: "client_credentials"
+            }
+        },
+        function(data){
+            var token = data.access_token;
+            callback(token);
+        }
+    );
+}
+
+// Write function that grabs access token then uses that to translate example text
+// e.g.:
+// https://msdn.microsoft.com/en-us/library/ff512385.aspx

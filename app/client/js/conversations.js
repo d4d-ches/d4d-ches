@@ -44,6 +44,10 @@ Template.page_conversations.helpers({
     format_date: function(raw_date){
         // for all formats check: http://momentjs.com/
         return moment(new Date(raw_date)).format('l');
+    },
+
+    to_csv: function(){
+        return "hey";
     }
 });
 

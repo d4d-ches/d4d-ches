@@ -83,38 +83,39 @@ Meteor.methods({
         Received.remove({});
     },
 
-    /*
-        Auto-translates the given text to English.
-        Returns { text: String } if successful, or { error: String } if error.
-    */
-    translateToEnglish: function(text){
-        var bing = Meteor.npmRequire('bingtranslator');
-        var credentials = {
-            clientId: 'd4d_ches',
-            clientSecret: 'VAiLgH+S9Qpj3lImoMsC+nInfp8mbngKbfRhBXA0JTE='
-        };
-        // result = { error: String } or { text: String}
-        var result = Async.runSync(function(done){
-            translator.detect(credentials, text, function(err, from){
-                if(err){
-                    done({ error: err });
-                }
-                else {
-                    bing.translate(credentials, text, from, 'en', function(err, translated){
-                        if(err){
-                            done({ error: err });
-                        }
-                        else {
-                            done({ text: translated });
-                        }
-                    });
-                }
-            });
-        });
 
-        return result;
+    /*
+        Translates `text` from language `from` to `to`.
+        Use the 2-letter code, e.g. "en" for English and "ht" for Haitian Creole.
+    */    
+    translate: function(text, from, to){
+        return translate(text, from, to);
     }
 });
+
+/*
+    Translates `text` from language `from` to `to`.
+    Use the 2-letter code, e.g. "en" for English and "ht" for Haitian Creole.
+*/
+function translate(text, from, to){
+    var bt = Meteor.npmRequire('bing-translate').init({
+        client_id: 'd4d_ches',
+        client_secret: 'VAiLgH+S9Qpj3lImoMsC+nInfp8mbngKbfRhBXA0JTE='
+    });
+
+    var response = Async.runSync(function(done) {
+        bt.translate(text, from, to, function(err, res) {
+            if (!err && res && res.translated_text) {
+                done(null, res.translated_text);
+            }
+            else {
+                done(err, null);
+            }
+        });
+    });
+
+    return response.result;
+}
 
 /**
     Requests an acccess token, and calls callback(token) when received.
@@ -132,6 +133,7 @@ function getAccessToken(callback){
         },
         function(data){
             var token = data.access_token;
+            console.log(data);
             callback(token);
         }
     );
@@ -154,7 +156,7 @@ function translateToCreole(token){
         },
         function(outdata){
             // TODO add to database
-            return outdata
+            return outdata;
         }
     );
 }

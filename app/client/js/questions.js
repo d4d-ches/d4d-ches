@@ -28,7 +28,6 @@ Template.page_questions.events({
             props[$(this).attr('name')] = $(this).val();
         });
         console.log(props);
-        Questions.update(this._id, props)
+        Questions.update(this._id, props);
     }
-
 });

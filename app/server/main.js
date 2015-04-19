@@ -87,7 +87,7 @@ Meteor.methods({
     /*
         Translates `text` from language `from` to `to`.
         Use the 2-letter code, e.g. "en" for English and "ht" for Haitian Creole.
-    */    
+    */
     translate: function(text, from, to){
         return translate(text, from, to);
     }
@@ -115,48 +115,4 @@ function translate(text, from, to){
     });
 
     return response.result;
-}
-
-/**
-    Requests an acccess token, and calls callback(token) when received.
-*/
-function getAccessToken(callback){
-    HTTP.post(
-        "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13/",
-        {
-            data: {
-                client_id: "d4d_ches",
-                client_secret: "VAiLgH+S9Qpj3lImoMsC+nInfp8mbngKbfRhBXA0JTE=",
-                scope: "http://api.microsofttranslator.com",
-                grant_type: "client_credentials"
-            }
-        },
-        function(data){
-            var token = data.access_token;
-            console.log(data);
-            callback(token);
-        }
-    );
-}
-
-// Write function that grabs access token then uses that to translate example text
-// e.g.:
-// https://msdn.microsoft.com/en-us/library/ff512385.aspx
-function translateToCreole(token){
-    HTTP.get(
-        "http://api.microsofttranslator.com/V2/Http.svc/Translate/",
-        {
-            data: {
-                appId: "Bearer " + token,
-                text: "hello world (example text)",
-                from: "en",
-                to: "ht",
-                contentType: "text/plain"
-            }
-        },
-        function(outdata){
-            // TODO add to database
-            return outdata;
-        }
-    );
 }

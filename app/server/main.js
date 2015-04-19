@@ -28,9 +28,7 @@ Meteor.methods({
         if(result && result.data){
             // the sent message = result.data
             var message = result.data;
-
-            message._id = message.id_str;
-
+            prepareMessage(message);
             History.insert(message);
 
             return true;
@@ -62,7 +60,7 @@ Meteor.methods({
                 if(Received.findOne({id_str: message.id_str}) === undefined){
                     // this isn't in database so add it
                     console.log("Inserting message #" + message.id_str);
-                    message._id = message.id_str;
+                    prepareMessage(message);
                     Received.insert(message);
                 }
                 else {
@@ -115,4 +113,21 @@ function translate(text, from, to){
     });
 
     return response.result;
+}
+
+/**
+    Adds an id to the raw message and translates it.
+*/
+function prepareMessage(message){
+    message._id = message.id_str;
+
+    // auto translate
+    if(message.sender.lang === "en"){
+        message.text_english = message.text;
+        message.text_creole = translate(message.text, "en", "ht");
+    }
+    else {
+        message.text_creole = message.text;
+        message.text_english = translate(message.text, "ht", "en");
+    }
 }

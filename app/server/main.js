@@ -122,7 +122,8 @@ function prepareMessage(message){
     message._id = message.id_str;
 
     // auto translate
-    if(message.sender.lang === "en"){
+    message.native_language = message.sender.lang;
+    if(message.native_language === "en"){
         message.text_english = message.text;
         message.text_creole = translate(message.text, "en", "ht");
     }

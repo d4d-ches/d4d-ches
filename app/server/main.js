@@ -122,6 +122,8 @@ function prepareMessage(message){
     message._id = message.id_str;
 
     // auto translate
+    // TODO make this based off the entrepreneur's native language from the database
+    // not twitter
     message.native_language = message.sender.lang;
     if(message.native_language === "ht"){
         message.text_creole = message.text;

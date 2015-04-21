@@ -48,6 +48,10 @@ Template.page_conversations.helpers({
 
     to_csv: function(){
         return messagesToCSV();
+    },
+
+    csv_link: function(){
+        return generateCsvLink();
     }
 });
 
@@ -124,12 +128,14 @@ function messagesConversation(){
 function messagesToCSV(){
     var tweets = messagesConversation();
     var lines = _.map(tweets, function(tweet){
-        return [
+        return _([
             tweet.sender_screen_name,
             tweet.recipient_screen_name,
             tweet.text,
             moment(new Date(tweet.created_at)).format('l')
-        ].join(",");
+        ]).map(function(item){
+            return '"' + item + '"'
+        }).join(",");
     });
     var body = lines.join("\n");
     var header = [
@@ -140,4 +146,12 @@ function messagesToCSV(){
     ].join(",");
     var contents = header + "\n" + body;
     return contents;
+}
+
+/**
+    Generates a link to download the current conversation as a CSV;
+    the href of an <a> element can be set to this.
+*/
+function generateCsvLink(){
+    return "data:text/csv;base64," + btoa(messagesToCSV());
 }

@@ -123,12 +123,15 @@ function prepareMessage(message){
 
     // auto translate
     message.native_language = message.sender.lang;
-    if(message.native_language === "en"){
-        message.text_english = message.text;
-        message.text_creole = translate(message.text, "en", "ht");
-    }
-    else {
+    if(message.native_language === "ht"){
         message.text_creole = message.text;
         message.text_english = translate(message.text, "ht", "en");
     }
+    else {
+        message.text_english = message.text;
+        message.text_creole = translate(message.text, "en", "ht");
+    }
+
+    // english text takes precedence
+    message.text = message.text_english;
 }

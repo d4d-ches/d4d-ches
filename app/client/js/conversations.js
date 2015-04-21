@@ -124,8 +124,20 @@ function messagesConversation(){
 function messagesToCSV(){
     var tweets = messagesConversation();
     var lines = _.map(tweets, function(tweet){
-        return [tweet.sender_screen_name, tweet.recipient_screen_name, tweet.text,      tweet.created_at].join(",");
+        return [
+            tweet.sender_screen_name,
+            tweet.recipient_screen_name,
+            tweet.text,
+            moment(new Date(tweet.created_at)).format('l')
+        ].join(",");
     });
-    var text = lines.join("\n");
-    return text;
+    var body = lines.join("\n");
+    var header = [
+        "Sender",
+        "Recipient",
+        "Text",
+        "Sent at"
+    ].join(",");
+    var contents = header + "\n" + body;
+    return contents;
 }

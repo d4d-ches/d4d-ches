@@ -1,9 +1,7 @@
 <head>
     <title>CHES Surveys</title>
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -34,11 +32,11 @@
                         <a href="#entrepreneurs" role="tab" data-toggle="tab">Entrepreneurs</a>
                     </li>
                     <li role="presentation">
-                        <a href="#ent_prof" role="tab" data-toggle="tab">Entrepreneur Profiles</a>
-                    </li>
-                    <li role="presentation">
                         <a href="#send" role="tab" data-toggle="tab">Send</a>
                     </li>
+                    <!--<li role="presentation">
+                        <a href="#recurring" role="tab" data-toggle="tab">Recurring</a>
+                    </li>-->
                     <li role="presentation">
                         <a href="#conversations" role="tab" data-toggle="tab">Conversations</a>
                     </li>
@@ -63,15 +61,15 @@
             <div role="tabpanel" class="tab-pane" id="send">
                 {{> page_send }}
             </div>
+            <!--<div role="tabpanel" class="tab-pane" id="recurring">
+                {{> page_recurring }}
+            </div>-->
             <div role="tabpanel" class="tab-pane" id="conversations">
                 {{> page_conversations }}
             </div>
             <div role="tabpanel" class="tab-pane" id="history">
                 {{> page_history }}
-	    </div>
-            <div role="tabpanel" class="tab-pane" id="ent_prof">
-                {{> page_ent_prof }}
-            </div>
+	           </div>
         </div>
     </div>
 </body>

@@ -1,7 +1,9 @@
+/*
 Questions = new Mongo.Collection("questions");
 Entrepreneurs = new Mongo.Collection("entrepreneurs");
 History = new Mongo.Collection("history");
 Received = new Mongo.Collection("received");
+*/
 
 Accounts.config({
     // forbidClientAccountCreation: true
@@ -26,9 +28,9 @@ Meteor.methods({
         if(result && result.data){
             // the sent message = result.data
             var message = result.data;
-            message._id = message.id_str;
+            prepareMessage(message);
             History.insert(message);
-            
+
             return true;
         }
         else {
@@ -58,7 +60,7 @@ Meteor.methods({
                 if(Received.findOne({id_str: message.id_str}) === undefined){
                     // this isn't in database so add it
                     console.log("Inserting message #" + message.id_str);
-                    message._id = message.id_str;
+                    prepareMessage(message);
                     Received.insert(message);
                 }
                 else {
@@ -77,5 +79,61 @@ Meteor.methods({
 
     flushDMs: function(){
         Received.remove({});
+    },
+
+
+    /*
+        Translates `text` from language `from` to `to`.
+        Use the 2-letter code, e.g. "en" for English and "ht" for Haitian Creole.
+    */
+    translate: function(text, from, to){
+        return translate(text, from, to);
     }
 });
+
+/*
+    Translates `text` from language `from` to `to`.
+    Use the 2-letter code, e.g. "en" for English and "ht" for Haitian Creole.
+*/
+function translate(text, from, to){
+    var bt = Meteor.npmRequire('bing-translate').init({
+        client_id: 'd4d_ches',
+        client_secret: 'VAiLgH+S9Qpj3lImoMsC+nInfp8mbngKbfRhBXA0JTE='
+    });
+
+    var response = Async.runSync(function(done) {
+        bt.translate(text, from, to, function(err, res) {
+            if (!err && res && res.translated_text) {
+                done(null, res.translated_text);
+            }
+            else {
+                done(err, null);
+            }
+        });
+    });
+
+    return response.result;
+}
+
+/**
+    Adds an id to the raw message and translates it.
+*/
+function prepareMessage(message){
+    message._id = message.id_str;
+
+    // auto translate
+    // TODO make this based off the entrepreneur's native language from the database
+    // not twitter
+    message.native_language = message.sender.lang;
+    if(message.native_language === "ht"){
+        message.text_creole = message.text;
+        message.text_english = translate(message.text, "ht", "en");
+    }
+    else {
+        message.text_english = message.text;
+        message.text_creole = translate(message.text, "en", "ht");
+    }
+
+    // english text takes precedence
+    message.text = message.text_english;
+}

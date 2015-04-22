@@ -1,86 +1,35 @@
 <template name="page_history">
     <h2>History</h2>
+    
+<!--
+<div class="well">
+    <h3>Filter questions by date</h3>
 
-    <div class="well">
-        <strong>DEV: all sent messages</strong>
-        {{#each all}}
-            <p>{{text}}</p>
-            <p>at {{created_at}}</p>
-            <p>to {{recipient_screen_name}}</p>
-        {{/each}}
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <p class="lead text-center">Start</p>
+
+            <div id="date-start">
+                {{> datepicker}}
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <p class="lead text-center">End</p>
+
+            <div id="date-end">
+                {{> datepicker}}
+            </div>
+        </div>
     </div>
 
-    <strong>Date</strong>
-
-<!--This is the drop down for the month on the left side of the page-->
-<form id="history-filter">
-<div class="row">
-  <div class="col-md-4">
-  <select class="form-control" id="history-month">
-  	<option>January</option>
-  	<option>February</option>
-  	<option>March</option>
-  	<option>April</option>
-  	<option>May</option>
-  	<option>June</option>
-  	<option>July</option>
-  	<option>August</option>
-  	<option>September</option>
-  	<option>October</option>
-  	<option>November</option>
-  	<option>December</option>
-  </select>
+    <button class="btn btn-primary" id="set-date-filter">
+        Filter
+    </button>
+    <button class="btn btn-default" id="clear-date-filter">
+        Clear
+    </button>
 </div>
-
-<div class="col-md-4">
-  <select class="form-control" id="history-day">
-  	<option>1</option>
-  	<option>2</option>
-  	<option>3</option>
-  	<option>4</option>
-  	<option>5</option>
-  	<option>6</option>
-  	<option>7</option>
-  	<option>8</option>
-  	<option>9</option>
-  	<option>10</option>
-  	<option>11</option>
-  	<option>12</option>
-  	<option>13</option>
-  	<option>14</option>
-  	<option>15</option>
-  	<option>16</option>
-  	<option>17</option>
-  	<option>18</option>
-  	<option>19</option>
-  	<option>20</option>
-  	<option>21</option>
-  	<option>22</option>
-  	<option>23</option>
-  	<option>24</option>
-  	<option>25</option>
-  	<option>26</option>
-  	<option>27</option>
-  	<option>28</option>
-  	<option>29</option>
-  	<option>30</option>
-  	<option>31</option>
-  </select>
-</div>
-
-
-  <div class="col-md-4">
-  	<select class="form-control" id="history-year">
-  		<option>2015</option>
-	</select>
-  </div>
-</div>
-
-<button class="btn btn-primary" type="submit">
-	Filter
-</button>
-</form>
-
+-->
 
 <br>
 
@@ -89,13 +38,13 @@
   <thead>
     <tr>
       <th>Entrepreneur Name</th>
-      <th>Questions</th>
+      <th>Question</th>
       <th>Send Reminder</th>
     </tr>
   </thead>
   <tbody>
-  	
-  	{{#each all}}
+
+  	{{#each filtered}}
   		<tr>
   			<td>
         		<strong class="book-title">{{recipient_screen_name}}</strong>
@@ -104,10 +53,35 @@
       		<td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Yes<br></td>
   		</tr>
   	{{/each}}
-  
+
 
   </tbody>
 </table>
 
+</template>
 
+<template name="datepicker">
+    <div class="form form-inline">
+        <select class="form-control datepicker-month">
+            {{#each months}}
+                <option>
+                    {{this}}
+                </option>
+            {{/each}}
+        </select>
+        <select class="form-control datepicker-day">
+            {{#each days}}
+                <option>
+                    {{this}}
+                </option>
+            {{/each}}
+        </select>
+        <select class="form-control datepicker-year">
+            {{#each years}}
+                <option>
+                    {{this}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
 </template>

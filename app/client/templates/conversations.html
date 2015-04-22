@@ -23,34 +23,34 @@
     	{{/each}}
         </select>
     </div>
-    
+
     {{#if chosen}}
         <div class="panel panel-primary">
           <!-- Default panel contents -->
           <div class="panel-heading">
-                <h2>Entrepreneur Profile for {{chosen.name}}</h2>
+                <p class="text-center"><h2>{{chosen.name}}</h2></p>
             </div>
 
-          <!-- Table (I will also center and make headers larger)-->
-          <table class="table table-striped">
-              <tr>
-                  <p class="bg-info">Contact Information</p>
-              </tr>
-              <tr>
-                  {{chosen.phone}}
-              </tr>
-              <tr>
-                  {{chosen.twitter}}
-              </tr>
-              <tr>
-                  <p class="bg-info">Company Information</p>
-              </tr>
-              <tr>
-                  <tr>Name: {{chosen.company}}</tr>
-                  <tr>Location: {{chosen.location}}</tr>
-                  <tr>Field: {{chosen.field}}</tr>
-              </tr>
-          </table>
+        <p class = "text-center">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="bg-info col-md-6"><h4>Contact Information</h4></div>
+                    <div class="bg-info col-md-6"><h4>Company Information</h4></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{chosen.phone}}</div>
+                    <div class="col-md-6">Name: {{chosen.company}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">@{{chosen.twitter}}</div>
+                    <div class="col-md-6">Location: {{chosen.location}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">Field: {{chosen.field}}</div>
+                </div>
+            </div>
+        </p>
         </div>
 
     {{/if}}
@@ -59,19 +59,6 @@
         <div>
             <br>
             <h5>Your Conversation with {{chosen.name}}:</h5>
-
-            <div class="well">
-                <strong>DEV: here are all the messages {{chosen.name}} sent to you:</strong>
-                {{#each messagesFromChosen}}
-                    <p>{{text}}</p>
-                {{/each}}
-            </div>
-            <div class="well">
-                <strong>DEV: here are all the messages you sent to {{chosen.name}}:</strong>
-                {{#each messagesToChosen}}
-                    <p>{{text}}</p>
-                {{/each}}
-            </div>
 
             <br>
             <div id="conversations-thread" style="overflow-y:auto; overflow-x:hidden; height:600px; width:auto">
@@ -95,14 +82,24 @@
                     <div class="col-xs-6">
                         <div class="well">
                             Just <td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Send Reminder<br></td>
+            <div id="conversations-thread">
+                {{#each messagesConversation}}
+                    {{#if received}}
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <blockquote class="well">
+                                {{text}}
+                                <footer>You, {{format_date created_at}}</footer>
+                            </blockquote>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            testing
+                    {{else}}
+                    <div class="row">
+                        <div class="col-xs-6 col-xs-push-6">
+                            <blockquote class="well">
+                                {{text}}
+                                <footer>{{chosen.name}}, {{format_date created_at}}</footer>
+                            </blockquote>
                         </div>
                     </div>
                 </div>
@@ -130,15 +127,27 @@
                         </div>
                     </div>
                 </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            *To be
-                        </div>
-                    </div>
-                </div>
+    <br>
 
+    <!--spits out conversations as a CSV-->
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-success">
+            <span class="glyphicon glyphicon-pencil"></span> Compile
+        </button>
+      </span>
+      <input type="text" class="form-control">
+
+      <pre>{{to_csv}}</pre>
+      <a href="{{csv_link}}" download="Conversation with {{chosen.name}}.csv" class="btn btn-default">
+          Download
+      </a>
+    </div>
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="well">
@@ -146,15 +155,5 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            actual conversations*
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     {{/if}}
 </template>

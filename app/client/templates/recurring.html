@@ -1,0 +1,31 @@
+<template name="page_recurring">
+    <h2>Recurring messages</h2>
+
+    <form id="recurring-new">
+        <label>Question</label>
+        <select id="recurring-question" class="form-control">
+            {{#each questions}}
+                <option value="{{_id}}">
+                    {{question_text}}
+                </option>
+            {{/each}}
+        </select>
+
+        <br>
+
+        <label>Send on</label>
+        <select id="recurring-every" class="form-control">
+            <option val="day">Every day</option>
+            <option val="week">Every week</option>
+            <option val="month">1st day of every month</option>
+            <option val="year">1st day of every year</option>
+        </select>
+
+        <br>
+
+        <button class="btn btn-lg btn-block btn-primary" type="submit">
+            <span class="glyphicon glyphicon-time"></span>
+            Schedule new recurring message
+        </button>
+    </form>
+</template>

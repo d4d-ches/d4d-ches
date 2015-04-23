@@ -60,7 +60,7 @@
             <h5>Your Conversation with {{chosen.name}}:</h5>
 
             <br>
-            <div id="conversations-thread">
+            <div id="conversations-thread" style="overflow-y:auto; overflow-x:hidden; height:600px; width:auto">
                 {{#each messagesConversation}}
                     {{#if received}}                    
                         <div class="row">
@@ -101,8 +101,12 @@
           Download
       </a>
     </div>
-
-
-
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="well">
+                            replaced by <td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Send Reminder<br></td>
+                        </div>
+                    </div>
+                </div>
     {{/if}}
 </template>

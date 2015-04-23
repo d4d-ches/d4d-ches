@@ -62,27 +62,6 @@
 
             <br>
             <div id="conversations-thread" style="overflow-y:auto; overflow-x:hidden; height:600px; width:auto">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            From you! <td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Send Reminder<br></td>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            From them!
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            Just <td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Send Reminder<br></td>
-            <div id="conversations-thread">
                 {{#each messagesConversation}}
                     {{#if received}}
                     <div class="row">
@@ -102,31 +81,6 @@
                             </blockquote>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            the <td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Send Reminder<br></td>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-xs-push-5">
-                        <div class="well">
-                            overflow
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            scrolling. <td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Send Reminder<br></td>
-                        </div>
-                    </div>
-                </div>
                     {{/if}}
                 {{/each}}
             </div>

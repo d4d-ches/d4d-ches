@@ -89,16 +89,16 @@
 
     <!--spits out conversations as a CSV-->
     <div class="input-group">
-      <span class="input-group-btn">
+      <!--<span class="input-group-btn">
         <button type="button" class="btn btn-success">
             <span class="glyphicon glyphicon-pencil"></span> Compile
         </button>
       </span>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control">-->
 
-      <pre>{{to_csv}}</pre>
-      <a href="{{csv_link}}" download="Conversation with {{chosen.name}}.csv" class="btn btn-default">
-          Download
+      
+      <a href="{{csv_link}}" download="Conversation with {{chosen.name}}.csv" class="btn btn-primary">
+          Download <span class="glyphicon glyphicon-download-alt"></span>
       </a>
     </div>
                 <div class="row">

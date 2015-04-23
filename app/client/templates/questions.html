@@ -32,7 +32,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Question</th>
+                        <th>Question in English</th>
+                        <th>Question in Creole</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
@@ -52,7 +53,10 @@
 <template name="question_template">
     <tr>
         <td>
-            <input type="text" name="text_english" class="form-control" value="{{text_english}} / {{text_creole}}">
+            <input type="text" name="text_english" class="form-control" value="{{text_english}}">
+        </td>
+        <td>
+            <input type="text" name="text_creole" class="form-control" value="{{text_creole}}">
         </td>
         <td>
             <button class="btn btn-primary btn-save">

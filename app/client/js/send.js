@@ -40,3 +40,28 @@ Template.page_send.events({
         return false;
     }
 });
+
+
+
+/**
+    Sends the given survey questions to each of the given recipients.
+    Get both arguments via Questions.find() and Entrepreneurs.find()
+*/
+function sendSurvey(questions, recipients){
+   $.each(questions, function(key, question){
+        $.each(recipients, function(key, recipient){
+            console.log("Send " + question.text_english + " to " + recipient.twitter);
+            console.log(question);
+
+            var params = {
+                recipient: recipient.twitter,
+                message: question.text_english
+            };
+            Meteor.call('sendDirectMessage', params, function(error, result){
+                console.log(error);
+                console.log(result);
+            });
+
+        });
+    });
+}

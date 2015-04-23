@@ -74,8 +74,15 @@ Template.page_conversations.events({
     	var button = event.target;
     	var id = $(button).data('id');
     	var history = History.findOne(id);
-    	console.log(history);
-    	alert(history.text + " " + history.recipient_screen_name);
+    	
+    var params = {
+                recipient: history.recipient_screen_name,
+                message: history.text
+            };
+            Meteor.call('sendDirectMessage', params, function(error, result){
+                console.log(error);
+                console.log(result);
+            });    	
     }
 });
 

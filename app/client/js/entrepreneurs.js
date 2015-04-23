@@ -13,6 +13,7 @@ Template.page_entrepreneurs.events({
             company:    form.company.value,
             location:   form.location.value,
             field:      form.field.value,
+            lang:       form.lang.value
         });
         
         clearForm(form);

@@ -68,6 +68,14 @@ Template.page_conversations.events({
         var twitter = $('#entrepreneur-chooser').val();
         var entrepreneur = Entrepreneurs.findOne({twitter: twitter});
         Session.set('chosenEntrepreneur', entrepreneur);
+    },
+    'click .btn-resend': function(event){
+    	//this should resend the message when the button is clicked
+    	var button = event.target;
+    	var id = $(button).data('id');
+    	var history = History.findOne(id);
+    	console.log(history);
+    	alert(history.text + " " + history.recipient_screen_name);
     }
 });
 

@@ -17,7 +17,7 @@ Template.page_questions.events({
                         numberSends: 0
                     });
 
-        
+
                 clearForm(event.target);
         });
 
@@ -26,6 +26,8 @@ Template.page_questions.events({
     'click .btn-delete': function(event){
         // delete this question
         Questions.remove(this._id);
+
+        return false;
     },
     'click .btn-save': function(event){
         //update this question
@@ -35,5 +37,7 @@ Template.page_questions.events({
         });
         console.log(props);
         Questions.update(this._id, props);
+
+        return false;
     }
 });

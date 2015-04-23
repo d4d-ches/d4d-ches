@@ -107,17 +107,21 @@
             <input type="text" name="field" class="form-control" value="{{field}}">
         </td>
         <td>
-            <input type="text" name="lang" class="form-control" value="{{lang}}">
+            <select>
+                <option value='en' {{selectedIfEqual 'en' lang}}>English</option>
+                <option value='ht' {{selectedIfEqual 'ht' lang}}>Hatian Creole</option>
+            </select>
         </td>
-       <td>
-           <button class="btn btn-primary btn-save">
-               <span class="glyphicon glyphicon-floppy-disk"></span>
-           </button>
-       </td>
-       <td>
-           <button class="btn btn-danger btn-delete">
-               <span class="glyphicon glyphicon-remove"></span>
-           </button>
-       </td>
+        <td>
+            <button class="btn btn-primary btn-save">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-danger btn-delete">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </td>
     </tr>
 </template>
+                                                                                                                                                                                                                                                                            

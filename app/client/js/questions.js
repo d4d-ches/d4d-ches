@@ -6,14 +6,20 @@ Template.page_questions.helpers({
 Template.page_questions.events({
     'submit #add_question': function (event) {
         // add a new question
-        Questions.insert({
-            question_text: event.target.question_text.value,
-            language: "en",
-            created: new Date(),
-            numberSends: 0
-        });
+        var english = event.target.text_english.value;
+          Meteor.call('translate', english, "en", "ht", function(error, result){
+                console.log(error);
+                console.log(result);
+                    Questions.insert({
+                        text_english: english,
+                        text_creole: result,
+                        created: new Date(),
+                        numberSends: 0
+                    });
 
-        clearForm(event.target);
+        
+                clearForm(event.target);
+        });
 
         return false;
     },

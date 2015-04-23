@@ -1,20 +1,20 @@
 <template name="page_questions">
-    <h2>Questions</h2>  
-    
+    <h2>Questions</h2>
+
     <!-- Your HTML here -->
     <div class="new-question">
         <h4>Add A New Question:</h4>
-    
+
         <!--
         <form id="add_question">
-            <input type="text" name="question_text" placeholder="Survey Question:" class="form-control"/>
+            <input type="text" name="text_english" placeholder="Survey Question:" class="form-control"/>
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
         -->
-        
+
         <form id="add_question">
         <div class="input-group">
-            <input type="text" name="question_text" class="form-control" 
+            <input type="text" name="text_english" class="form-control"
                    placeholder="Survey Question:">
             <span class="input-group-btn">
                 <!--<button class="btn btn-primary" type="button">Add!</button>-->
@@ -22,17 +22,18 @@
             </span>
         </div>
         </form>
-        
+
     </div>
-    
+
     <div class="current-questions">
         <h4>List of Current Questions:</h4>
-        
+
         <form class="form" id="form-save-questions">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Question</th>
+                        <th>Question in English</th>
+                        <th>Question in Creole</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
@@ -52,7 +53,10 @@
 <template name="question_template">
     <tr>
         <td>
-            <input type="text" name="question_text" class="form-control" value="{{question_text}}">
+            <input type="text" name="text_english" class="form-control" value="{{text_english}}">
+        </td>
+        <td>
+            <input type="text" name="text_creole" class="form-control" value="{{text_creole}}">
         </td>
         <td>
             <button class="btn btn-primary btn-save">

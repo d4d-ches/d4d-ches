@@ -16,25 +16,12 @@ Accounts.config({
 // load any new direct messages into the database
 Meteor.call('loadDirectMessages');
 
-
-/**
-    Sends the given survey questions to each of the given recipients.
-    Get both arguments via Questions.find() and Entrepreneurs.find()
-*/
-sendSurvey = function(questions, recipients){
-   $.each(questions, function(key, question){
-        $.each(recipients, function(key, recipient){
-            console.log("Send " + question.question_text + " to " + recipient.twitter);
-
-            var params = {
-                recipient: recipient.twitter,
-                message: question.question_text
-            };
-            Meteor.call('sendDirectMessage', params, function(error, result){
-                console.log(error);
-                console.log(result);
-            });
-
-        });
-    });
-}
+UI.registerHelper("selectedIfEqual", function(a, b) {
+  if(a === b){
+      return "selected";
+  }
+  else {
+      return "";
+  }
+});
+// {{selectedIfEqual "en" lang}}

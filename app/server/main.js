@@ -26,7 +26,7 @@ Meteor.methods({
 
         var result = twitter.post('direct_messages/new.json', {
             screen_name: recipient.twitter,
-            text: message.question_text
+            text: message.text_english
         });
         if(result && result.data){
             // the sent message = result.data

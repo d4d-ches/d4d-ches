@@ -1,12 +1,6 @@
 Template.page_entrepreneurs.helpers({
     entrepreneurs: function(){
         return Entrepreneurs.find({});
-    },
-    isChosenLang: function(selectedLang, realLang){
-        if (selectedLang === realLang){
-            return "selected";
-        }
-        return "";
     }
 });
 Template.page_entrepreneurs.events({

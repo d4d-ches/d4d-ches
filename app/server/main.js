@@ -21,9 +21,12 @@ Meteor.methods({
             true if the Twitter query succeeded, false if failed.
     */
     sendDirectMessage: function(params){
+        var recipient = params.recipient; // Entrepreneur
+        var message = params.message; // Tweet
+
         var result = twitter.post('direct_messages/new.json', {
-            screen_name: params.recipient,
-            text: params.message
+            screen_name: recipient.twitter,
+            text: message.question_text
         });
         if(result && result.data){
             // the sent message = result.data

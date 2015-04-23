@@ -6,8 +6,9 @@ Template.page_questions.helpers({
 Template.page_questions.events({
     'submit #add_question': function (event) {
         // add a new question
+        var english = event.target.question_text.value;
         Questions.insert({
-            question_text: event.target.question_text.value,
+            question_text: english,
             language: "en",
             created: new Date(),
             numberSends: 0

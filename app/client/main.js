@@ -18,10 +18,14 @@ Meteor.call('loadDirectMessages');
 
 UI.registerHelper("selectedIfEqual", function(a, b) {
   if(a === b){
-      return "selected";
+      return {
+          selected: ""
+      };
   }
   else {
-      return "";
+      return {
+          
+      };
   }
 });
 
@@ -32,5 +36,5 @@ UI.registerHelper("languageFull", function(short){
         default: return short;
     }
 });
-
+// {{languageFull chosen.lang}}
 // {{selectedIfEqual "en" lang}}

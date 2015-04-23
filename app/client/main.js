@@ -24,4 +24,13 @@ UI.registerHelper("selectedIfEqual", function(a, b) {
       return "";
   }
 });
+
+UI.registerHelper("languageFull", function(short){
+    switch(short){
+        case "en": return "English"; break;
+        case "ht": return "Haitian Creole"; break;
+        default: return short;
+    }
+});
+
 // {{selectedIfEqual "en" lang}}

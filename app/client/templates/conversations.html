@@ -34,8 +34,7 @@
         <p class = "text-center">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="bg-info col-md-6"><h4>Contact Information</h4></div>
-                    <div class="bg-info col-md-6"><h4>Company Information</h4></div>
+                    <div class="bg-info col-md-12"><h4>Contact Information</h4></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">{{chosen.phone}}</div>
@@ -63,24 +62,24 @@
             <br>
             <div id="conversations-thread">
                 {{#each messagesConversation}}
-                    {{#if received}}
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <blockquote class="well">
-                                {{text}}
-                                <footer>You, {{format_date created_at}}</footer>
-                            </blockquote>
+                    {{#if received}}                    
+                        <div class="row">
+                            <div class="col-xs-6 col-xs-push-6">
+                                <blockquote class="well">
+                                    {{text}}
+                                    <footer>{{chosen.name}}, {{format_date created_at}}</footer>
+                                </blockquote>
+                            </div>
                         </div>
-                    </div>
                     {{else}}
-                    <div class="row">
-                        <div class="col-xs-6 col-xs-push-6">
-                            <blockquote class="well">
-                                {{text}}
-                                <footer>{{chosen.name}}, {{format_date created_at}}</footer>
-                            </blockquote>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <blockquote class="well">
+                                    {{text}}
+                                    <footer>You, {{format_date created_at}}</footer>
+                                </blockquote>
+                            </div>
                         </div>
-                    </div>
                     {{/if}}
                 {{/each}}
             </div>

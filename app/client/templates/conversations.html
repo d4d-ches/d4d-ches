@@ -60,9 +60,9 @@
             <h5>Your Conversation with {{chosen.name}}:</h5>
 
             <br>
-            <div id="conversations-thread" style="overflow-y:auto; overflow-x:hidden; height:600px; width:auto">
+            <div id="conversations-thread">
                 {{#each messagesConversation}}
-                    {{#if received}}                    
+                    {{#if received}}
                         <div class="row">
                             <div class="col-xs-6 col-xs-push-6">
                                 <blockquote class="well">

@@ -7,14 +7,19 @@ Template.page_questions.events({
     'submit #add_question': function (event) {
         // add a new question
         var english = event.target.question_text.value;
-        Questions.insert({
-            question_text: english,
-            language: "en",
-            created: new Date(),
-            numberSends: 0
-        });
+          Meteor.call('translate', english, "en", "ht", function(error, result){
+                console.log(error);
+                console.log(result);
+                    Questions.insert({
+                        text_english: english,
+                        text_creole: result,
+                        created: new Date(),
+                        numberSends: 0
+                    });
 
-        clearForm(event.target);
+        
+                clearForm(event.target);
+        });
 
         return false;
     },

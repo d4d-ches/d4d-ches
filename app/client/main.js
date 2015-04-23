@@ -15,3 +15,13 @@ Accounts.config({
 /* initialization */
 // load any new direct messages into the database
 Meteor.call('loadDirectMessages');
+
+UI.registerHelper("selectedIfEqual", function(a, b) {
+  if(a === b){
+      return "selected";
+  }
+  else {
+      return "";
+  }
+});
+// {{selectedIfEqual "en" lang}}

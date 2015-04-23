@@ -6,7 +6,7 @@ Template.page_questions.helpers({
 Template.page_questions.events({
     'submit #add_question': function (event) {
         // add a new question
-        var english = event.target.question_text.value;
+        var english = event.target.text_english.value;
           Meteor.call('translate', english, "en", "ht", function(error, result){
                 console.log(error);
                 console.log(result);

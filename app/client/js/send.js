@@ -50,12 +50,12 @@ Template.page_send.events({
 function sendSurvey(questions, recipients){
    $.each(questions, function(key, question){
         $.each(recipients, function(key, recipient){
-            console.log("Send " + question.question_text + " to " + recipient.twitter);
+            console.log("Send " + question.text_english + " to " + recipient.twitter);
             console.log(question);
 
             var params = {
-                recipient: recipient,
-                message: question
+                recipient: recipient.twitter,
+                message: question.text_english
             };
             Meteor.call('sendDirectMessage', params, function(error, result){
                 console.log(error);

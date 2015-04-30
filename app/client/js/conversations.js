@@ -61,7 +61,6 @@ Template.page_questions.helpers({
     }
 });
 
-// TODO need function to make conversations show only when choice selected
 Template.page_conversations.events({
     'change #entrepreneur-chooser': function(){
         // deduce entrepreneur from twitter handle
@@ -74,7 +73,7 @@ Template.page_conversations.events({
     	var button = event.target;
     	var id = $(button).data('id');
     	var history = History.findOne(id);
-    	
+
     var params = {
                 recipient: history.recipient_screen_name,
                 message: history.text
@@ -82,7 +81,7 @@ Template.page_conversations.events({
             Meteor.call('sendDirectMessage', params, function(error, result){
                 console.log(error);
                 console.log(result);
-            });    	
+            });
     }
 });
 

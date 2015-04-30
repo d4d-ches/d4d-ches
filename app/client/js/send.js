@@ -50,12 +50,20 @@ Template.page_send.events({
 function sendSurvey(questions, recipients){
    $.each(questions, function(key, question){
         $.each(recipients, function(key, recipient){
-            console.log("Send " + question.text_english + " to " + recipient.twitter);
+            var text;
+            if(recipient.lang === "ht"){
+                text = question.text_creole;
+            }
+            else {
+                text = question.text_english;
+            }
+
+            console.log("Send " + text + " to " + recipient.twitter);
             console.log(question);
 
             var params = {
                 recipient: recipient.twitter,
-                message: question.text_english
+                message: text
             };
             Meteor.call('sendDirectMessage', params, function(error, result){
                 console.log(error);

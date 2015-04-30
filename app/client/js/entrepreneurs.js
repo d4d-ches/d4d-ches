@@ -15,9 +15,9 @@ Template.page_entrepreneurs.events({
             field:      form.field.value,
             lang:       form.lang.value
         });
-        
+
         clearForm(form);
-        
+
         return false;
     },
     'click .btn-delete': function(event){
@@ -27,8 +27,13 @@ Template.page_entrepreneurs.events({
     'click .btn-save': function(event){
         // update this entrepreneur
         var props = {};
-        $(event.target).closest('tr').children().find('input').each(function(){
+        var formElements = $(event.target).closest('tr').children();
+        // inputs
+        formElements.find('input').each(function(){
             props[$(this).attr('name')] = $(this).val();
+        });
+        formElements.find('select').each(function(){
+            props[$(this).attr('name')] = $(this).find(':selected').val();
         });
         console.log(props);
         Entrepreneurs.update(this._id, props);

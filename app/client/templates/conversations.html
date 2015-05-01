@@ -56,6 +56,9 @@
     {{/if}}
 
     {{#if chosen}}
+        <a href="{{csv_link}}" download="Conversation with {{chosen.name}}.csv" class="btn btn-primary">
+          Download <span class="glyphicon glyphicon-download-alt"></span>
+        </a>
         <div>
             <br>
             <h5>Your Conversation with {{chosen.name}}:</h5>
@@ -92,17 +95,6 @@
 
     <!--spits out conversations as a CSV-->
     <div class="input-group">
-      
-      <a href="{{csv_link}}" download="Conversation with {{chosen.name}}.csv" class="btn btn-primary">
-          Download <span class="glyphicon glyphicon-download-alt"></span>
-      </a>
     </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="well">
-                            <td class="item-Send Reminder"><input type="checkbox" name="option1" value="Yes"> Send Reminder<br></td>
-                        </div>
-                    </div>
-                </div>
     {{/if}}
 </template>

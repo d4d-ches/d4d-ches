@@ -125,18 +125,19 @@ function prepareMessage(message){
     message._id = message.id_str;
 
     // auto translate
-    // TODO make this based off the entrepreneur's native language from the database
-    // not twitter
-    message.native_language = message.sender.lang;
-    if(message.native_language === "ht"){
-        message.text_creole = message.text;
-        message.text_english = translate(message.text, "ht", "en");
-    }
-    else {
-        message.text_english = message.text;
-        message.text_creole = translate(message.text, "en", "ht");
-    }
+    var sender = Entrepreneurs.findOne({ twitter: message.sender_screen_name });
+    if(sender){
+        message.native_language = sender.lang;
+        if(message.native_language === "ht"){
+            message.text_creole = message.text;
+            message.text_english = translate(message.text, "ht", "en");
+        }
+        else {
+            message.text_english = message.text;
+            message.text_creole = translate(message.text, "en", "ht");
+        }
 
-    // english text takes precedence
-    message.text = message.text_english;
+        // english text takes precedence
+        message.text = message.text_english;
+    }
 }

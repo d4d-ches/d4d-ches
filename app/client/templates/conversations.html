@@ -75,11 +75,11 @@
                     {{else}}
                         <div class="row">
                             <div class="col-xs-6">
-                                <blockquote class="well">
+                                <blockquote class="well clearfix">
+                                    <button type="button" class="btn btn-primary btn-resend pull-right"
+                                    	data-id="{{_id}}">Resend</button>
                                     {{text}}
                                     <footer>You, {{format_date created_at}}</footer>
-                                    <button type="button" class="btn btn-primary btn-resend"
-                                    	data-id="{{_id}}">Resend</button>
                                 </blockquote>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
 
     <!--spits out conversations as a CSV-->
     <div class="input-group">
-      
+
       <a href="{{csv_link}}" download="Conversation with {{chosen.name}}.csv" class="btn btn-primary">
           Download <span class="glyphicon glyphicon-download-alt"></span>
       </a>

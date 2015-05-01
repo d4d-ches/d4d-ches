@@ -1,5 +1,6 @@
 {
   "redis": "0.8.2",
   "github": "0.1.8",
-  "bingtranslator": "0.0.7"
+  "bingtranslator": "0.0.7",
+  "bing-translate": "0.0.2"
 }
